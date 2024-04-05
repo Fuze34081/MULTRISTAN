@@ -1,0 +1,1604 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MULTRISTAN v0.12 English</title>
+  <style>
+
+    .texte-centre {
+      text-align: center;
+      animation: fadeInDown 1s ease-out forwards;
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+#animation-news {
+      animation: fadeInDown 1s ease-out forwards;
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #options {
+      display: none;
+    }
+
+    /* Styles pour le bouton personnalisé */
+    .bouton-personnalise {
+        background-color: #4CAF50; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 15px 32px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 15px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise:hover {
+        background-color: #45a049; /* Couleur de fond différente au survol */
+    }
+
+.bouton-personnalise4 {
+        background-color: #FF8000; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 12px 25px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 15px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise4:hover {
+        background-color: #FFA500; /* Couleur de fond différente au survol */
+    }
+
+    /* Styles pour le bouton personnalisé */
+    .bouton-personnalise2 {
+        background-color: #B22222; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 9px 20px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 11px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise2:hover {
+        background-color: #8B0000; /* Couleur de fond différente au survol */
+    }
+
+/* Styles pour le bouton personnalisé */
+    .bouton-personnalise3 {
+        background-color: #B22222; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 9px 20px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 11px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise2:hover {
+        background-color: #8B0000; /* Couleur de fond différente au survol */
+    }
+
+#calendrier {
+  position: absolute;
+  top: 850px; /* distance en pixels depuis le haut de la fenêtre */
+  left: 650px; /* distance en pixels depuis la gauche de la fenêtre */
+}
+
+.bubble {
+        position: absolute;
+        top: 20px; /* distance en pixels depuis le haut de la fenêtre */
+        right: 10px; /* distance en pixels depuis la droite de la fenêtre */;
+        background-color: #f7f7f7;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        max-width: 220px;
+    }
+
+.pub1 {
+        position: absolute;
+        top: 5px; /* distance en pixels depuis le haut de la fenêtre */
+        left: 5px; /* distance en pixels depuis la gauche de la fenêtre */;
+    }
+
+.pub2 {
+        position: absolute;
+        top: 5px; /* distance en pixels depuis le haut de la fenêtre */
+        right: 5px; /* distance en pixels depuis la droite de la fenêtre */;
+    }
+
+.pub3 {
+        position: absolute;
+        top: 1360px; /* distance en pixels depuis le haut de la fenêtre */
+        left: 650px; /* distance en pixels depuis la gauche de la fenêtre */;
+    }
+
+.bouton-cache {
+  display: none; /* Masquer les boutons non pertinents */
+}
+
+#argent {
+            position: fixed;
+            top: 25px;
+            left: 13px;
+            background-color: #fff; /* Couleur de fond */
+            color: 333; /* Couleur du texte */
+            padding: 5px 10px; /* Espacement intérieur */
+            border-radius: 5px; /* Bord arrondi */
+            font-size: 18px; /* Taille de la police */
+            font-family: Arial, sans-serif; /* Police de caractères */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre */
+        }
+
+#boutonBoutique {
+            position: absolute;
+            top: 1210px;
+            left: 650px;
+        }
+
+.gestion {
+        position: absolute;
+        top: 270px;
+        left: 10px;
+    }
+
+.education {
+        position: absolute;
+        top: 270px;
+        left: 310px;
+    }
+
+.services {
+        position: absolute;
+        top: 270px;
+        left: 650px;
+    }
+
+.navigation {
+        position: absolute;
+        top: 500px;
+        left: 10px;
+    }
+
+.resaux_sociaux {
+        position: absolute;
+        top: 500px;
+        left: 310px;
+    }
+
+.retours2 {
+        position: absolute;
+        top: 700px;
+        left: 0px;
+    }
+
+#champRecherche {
+            width: 200px; /* Largeur du champ de recherche */
+            padding: 10px; /* Remplissage intérieur du champ de recherche */
+            border: 1px solid #000000; /* Bordure du champ de recherche */
+            border-radius: 5px; /* Arrondi des coins du champ de recherche */
+            font-size: 16px; /* Taille de la police du champ de recherche */
+            outline: none; /* Supprime la mise en évidence du champ de recherche lorsqu'il est sélectionné */
+        }
+
+        #champRecherche::placeholder {
+            color: #999; /* Couleur du texte de l'attribut placeholder */
+        }
+</style>
+</head>
+<body>
+<div id="argent">Your money : 0 €</div>
+
+<iframe id="calendrier" src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FParis&bgcolor=%234285F4&showTitle=0&showNav=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=MzBhMDkwMTM5MzA1MjFkYmM4YTA5OWJkOTVlMjkwYWI3MGY5ZjdhOGY1M2JhZGY2Mjc5NzI4MTg2OTE2MWIwY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZnIuZnJlbmNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161&color=%230B8043" style="border:solid 1px #777" width="400" height="300" frameborder="0" scrolling="no"></iframe>
+
+  <div id="programme">
+    <div class="texte-centre">
+      <h1>MULTRISTAN</h1>
+      <h2>Welcome to the official version of MULTRISTAN!</h2>
+      <h4>MULTRISTAN is an html program created to help people fulfill their needs at best.</h4>
+      <button class="bouton-personnalise" onclick="toggleVisibility()">Access the program</button>
+    </div>
+
+<div id="texteAuDessusCalendrier" style="position: absolute; top: 805px; left: 650px;"><h4>Official calendar of events of MULTRISTAN<h4></div>
+<div id="texto"><h2>The features :</h2></div>
+<div class="gestion" id="gestion_bancaire_utilitaires">
+    <h3>Banking and utilities management :</h3>
+    <ul>
+        <li>Check your bank balance</li>
+        <li>Open the calculator</li>
+        <li>Generate a secure password</li>
+        <li>Check an email address</li>
+        <li>Access taxes</li>
+    </ul>
+</div>
+
+<div class="education" id="education_divertissement">
+    <h3>Education and entertainment :</h3>
+    <ul>
+        <li>Open PRONOTE</li>
+        <li>Do a search with MULTRISTAN</li>
+        <li>Dice emulator</li>
+        <li>Play hangman</li>
+        <li>Throw a random game</li>
+        <li>Play games .io</li>
+    </ul>
+</div>
+
+<div class="services" id="services_en_ligne">
+    <h3>Online Services :</h3>
+    <ul>
+        <li>Open Youtube</li>
+        <li>Open Amazon</li>
+        <li>Open Gmail</li>
+        <li>Buy train tickets from SNCF</li>
+        <li>Buy Air France flight tickets</li>
+    </ul>
+</div>
+
+<div class="navigation" id="navigation_geolocalisation">
+    <h3>Navigation and geolocation :</h3>
+    <ul>
+        <li>Open Google Maps</li>
+        <li>View the time of the world</li>
+        <li>Open Google Agenda</li>
+        <li>Access Google Drive</li>
+        <li>Go to Google Traduction</li>
+    </ul>
+</div>
+
+<div class="resaux_sociaux" id="reseaux_sociaux_medias">
+    <h3>Social Media :</h3>
+    <ul>
+        <li>Open X (twitter)</li>
+        <li>Open Twitch</li>
+        <li>Open le Monde</li>
+        <li>Open France Info</li>
+        <li>Open Facebook</li>
+        <li>Open tag.fr</li>
+        <li>Open CNEWS</li>
+        <li>Open ChatGPT</li>
+        <li>Open Copilot</li>
+        <li>Open DALL.E</li>
+    </ul>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <div id="retours"><h4>Feel free to give feedback if you notice bugs or if you have ideas for improvements! Feedback is just below!⬇️</h4></div>
+
+<div id="animation-news" class="bubble">
+    <h3>What’s New v0.12<br><br></h3>
+    <p>- Sort features by category<br>- Added 30 new styles to the store<br>- Creation of the Premium version<br>- Creation of the English version<br>- bug fixes</p>
+</div>
+
+<button class="bouton-personnalise" id="boutonBoutique" onclick="toggleBoutique()">Go to store</button>
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScysocxPJuTkdUP9yeFo2SDyIG_AcG_kdhVMWVph-Iopa6jcQ/viewform?embedded=true" width="640" height="1885" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+    <marquee>MULTRISTAN © // November 2023 - April 2024 // created by Fuze34081 // version : 0.12 english // Download MULTRISTAN : https://github.com/Fuze34081/MULTRISTAN // thank you to DIAB Jihad, GOMEZ Matthias and SUEL Anatole</marquee>
+  <div class="pub3"><img src="https://fuzeshop.fr/cdn/shop/collections/Peluche_1400x.jpg?v=1638356092" alt="Loading error from your browser! --> fuzeshop.fr" width="360" height="202"></div>
+</div>
+
+<div id="boutique" class="texte-centre" style="display: none;">
+  <!-- Contenu de la boutique -->
+  <h1>Store</h1>
+  <p>Put the background in black - Price : 15€ <button onclick="fond_noir(15)">Buy</button></p>
+  <p>Put the background in white - Price : 5€ <button onclick="fond_blanc(5)">Buy</button></p>
+  <p>Put the background in light grey - Price : 15€ <button onclick="fond_grisClair(15)">Buy</button></p>
+  <p>Put the background in dark grey - Price : 15€ <button onclick="fond_grisFonce(15)">Buy</button></p>
+  <p>Put the background in light green - Price : 15€ <button onclick="fond_vertClair(15)">Buy</button></p>
+  <p>Put the background in sky blue - Price : 15€ <button onclick="fond_bleuCiel(15)">Buy</button></p>
+  <p>Put the background in pale yellow - Price : 15€ <button onclick="fond_jaunePale(15)">Buy</button></p>
+  <p>Put the background in light red - Price : 15€ <button onclick="fond_rougeClair(15)">Buy</button></p>
+  <p>Put the background in pink - Price : 15€ <button onclick="fond_rose(15)">Buy</button></p>
+  <p>Put the background in purple - Price : 15€ <button onclick="fond_violet(15)">Buy</button></p>
+  <p>Put the background in orange - Price : 15€ <button onclick="fond_orange(15)">Buy</button></p>
+  <p>Put the background in turquoise - Price : 15€ <button onclick="fond_turquoise(15)">Buy</button></p>
+  <p>Put the background in dark blue - Price : 15€ <button onclick="fond_bleuFonce(15)">Buy</button></p>
+  <p>Put the background in dark green - Price : 15€ <button onclick="fond_vertFonce(15)">Buy</button></p>
+  <p>Put the background in brown - Price : 15€ <button onclick="fond_marron(15)">Buy</button></p>
+  <br>
+  <br>
+  <p>Put the text gold color - Price : 25€ <button onclick="fiouze(25)">Buy</button></p>
+<p>Put the text in white - Price : 20€ <button onclick="text_blanc(20)">Buy</button></p>
+<p>Put the text in black - Price : 10€ <button onclick="text_noir(10)">Buy</button></p>
+<p>Put the text in light grey - Price : 20€ <button onclick="text_grisClair(20)">Buy</button></p>
+<p>Put the text in dark grey - Price : 20€ <button onclick="text_grisFonce(20)">Buy</button></p>
+<p>Put the text in sky blue - Price : 20€ <button onclick="text_bleuCiel(20)">Buy</button></p>
+<p>Put the text in light green - Price : 20€ <button onclick="text_vertClair(20)">Buy</button></p>
+<p>Put the text in pale yellow - Price : 20€ <button onclick="text_jaunePale(20)">Buy</button></p>
+<p>Put the text in light red - Price : 20€ <button onclick="text_rougeClair(20)">Buy</button></p>
+<p>Put the text in pink - Price : 20€ <button onclick="text_rose(20)">Buy</button></p>
+<p>Put the text in purple - Price : 20€ <button onclick="text_violet(20)">Buy</button></p>
+<p>Put the text in orange - Price : 20€ <button onclick="text_orange(20)">Buy</button></p>
+<p>Put the text in turquoise - Price : 20€ <button onclick="text_turquoise(20)">Buy</button></p>
+<p>Put the text in dark blue - Price : 20€ <button onclick="text_bleuFonce(20)">Buy</button></p>
+<p>Put the text in dark green - Price : 20€ <button onclick="text_vertFonce(20)">Buy</button></p>
+<p>Put the text in brown - Price : 20€ <button onclick="text_marron(20)">Buy</button></p>
+<br>
+<h4>More styles on the Premium version</h4>
+<br>
+  <button class="bouton-personnalise" onclick="toggleBoutique()">Return</button>
+</div>
+
+  <div class="texte-centre" id="options">
+    <h1>MULTRISTAN v0.12</h1>
+    <p>Please select an option:</p>
+<br>
+    <button class="bouton-personnalise" onclick="toggleVisibility()">Return</button>
+<div class="pub1"><img src="https://fuzeshop.fr/cdn/shop/collections/Peluche_1400x.jpg?v=1638356092" alt="Loading error from your browser! --> fuzeshop.fr" width="310" height="174"></div>
+<div class="pub2"><img src="https://image.jeuxvideo.com/medias-sm/145711/1457109122-4989-logo.jpg" alt="Loading error from your browser! --> fuzeshop.fr" width="310" height="174"></div>
+<br>
+<br>
+<div id="recherche">
+  <input type="text" id="champRecherche" placeholder="Search...">
+</div>
+<div id="resultats" style="position: relative; top: 15px;"></div>
+<div id="resultats"></div>
+<br>
+<br>
+    <button class="bouton-personnalise2" onclick="checkBalance()" data-fonction="checkBalance">Check your bank balance</button>
+<h2>Most used :</h2><br>
+<button class="bouton-personnalise4" onclick="openYoutube()">Open Youtube</button>
+<button class="bouton-personnalise4" onclick="openAmazon()">Open Amazon</button>
+<br>
+<br>
+<button class="bouton-personnalise4" onclick="openImpôts()">Access taxes</button>
+<button class="bouton-personnalise4" onclick="openGmail()">Open Gmail</button>
+<br>
+<br>
+<button class="bouton-personnalise4" onclick="playHangman()">Play hangman</button>
+<button class="bouton-personnalise4" onclick="searchWithMultristan()">Do a search with MULTRISTAN</button>
+<br>
+<br>
+<button class="bouton-personnalise4" onclick="openImpôts()">Access taxes</button>
+<button class="bouton-personnalise4" onclick="traduction()">Go to Google Traduction</button>
+    <button class="bouton-personnalise2" onclick="openPronote()" data-fonction="openPronote">Open PRONOTE</button>
+    <button class="bouton-personnalise2" onclick="openCalculator()" data-fonction="openCalculator">Open la calculatrice</button>
+    <button class="bouton-personnalise2" onclick="convertToBinary()" data-fonction="convertToBinary">Convert to binary</button>
+    <button class="bouton-personnalise2" onclick="searchWithMultristan()" data-fonction="searchWithMultristan">Do a search with MULTRISTAN</button>
+    <button class="bouton-personnalise2" onclick="generatePassword()" data-fonction="generatePassword">Generate a secure password</button>
+    <button class="bouton-personnalise2" onclick="checkEmail()" data-fonction="checkEmail">Check an email address</button>
+    <button class="bouton-personnalise2" onclick="rollDice()" data-fonction="rollDice">Dice emulator</button>
+    <button class="bouton-personnalise2" onclick="playHangman()" data-fonction=playHangman">Play hangman</button>
+    <button class="bouton-personnalise2" onclick="openRandomGame()" data-fonction="openRandomGame">Throw a random game</button> 
+    <button class="bouton-personnalise2" onclick="openYoutube()" data-fonction="openYoutube">Open Youtube</button>
+    <button class="bouton-personnalise2" onclick="openAmazon()" data-fonction="openAmazon">Open Amazon</button>
+    <button class="bouton-personnalise2" onclick="openImpôts()" data-fonction="openImpôts">Access taxes</button>
+    <button class="bouton-personnalise2" onclick="openGmail()" data-fonction="openGmail">Open Gmail</button>
+    <button class="bouton-personnalise2" onclick="sncf()" data-fonction="sncf">Buy train tickets from SNCF</button>
+    <button class="bouton-personnalise2" onclick="airfrance()" data-fonction="airfrance">Buy Air France flight tickets</button>
+    <button class="bouton-personnalise2" onclick="googleMaps()" data-fonction="googleMaps">Open Google Maps</button>
+    <button class="bouton-personnalise2" onclick="fuzeShop()" data-fonction="fuzeShop">Fuze Shop</button>
+    <button class="bouton-personnalise2" onclick="discord()" data-fonction="discord">Open Discord</button>
+    <button class="bouton-personnalise2" onclick="heure()" data-fonction="heure">View the time of the world</button>
+    <button class="bouton-personnalise2" onclick="agenda()" data-fonction="agenda">Open Google Agenda</button>
+    <button class="bouton-personnalise2" onclick="drive()" data-fonction="drive">Open Google Drive</button>
+    <button class="bouton-personnalise2" onclick="traduction()" data-fonction="traduction">Go to Google Traduction</button>
+    <button class="bouton-personnalise2" onclick="wikipédia()" data-fonction="wikipédia">Open Wikipédia</button>
+    <button class="bouton-personnalise2" onclick="google()" data-fonction="google">Access to Google</button>
+    <button class="bouton-personnalise2" onclick="qwant()" data-fonction="qwant">Access to Qwant</button>
+    <button class="bouton-personnalise2" onclick="bing()" data-fonction="bing">Access to Microsoft Bing</button>
+    <button class="bouton-personnalise2" onclick="yahoo()" data-fonction="yahoo">Access to Yahoo</button>
+    <button class="bouton-personnalise2" onclick="ecosia()" data-fonction="ecosia">Access to Ecosia</button>
+    <button class="bouton-personnalise2" onclick="twitter()" data-fonction="twitter">Open X (twitter)</button>
+    <button class="bouton-personnalise2" onclick="twitch()" data-fonction="twitch">Open Twitch</button>
+    <button class="bouton-personnalise2" onclick="leMonde()" data-fonction="leMonde">Open Le Monde</button>
+    <button class="bouton-personnalise2" onclick="franceInfo()" data-fonction="franceInfo">Open France Info</button>
+    <button class="bouton-personnalise2" onclick="cnews()" data-fonction="cnews">Open CNEWS</button>
+    <button class="bouton-personnalise2" onclick="chatGPT()" data-fonction="chatGPT">Open ChatGPT</button>
+    <button class="bouton-personnalise2" onclick="copilot()" data-fonction="copilot">Open Copilot</button>
+    <button class="bouton-personnalise2" onclick="dalle()" data-fonction="dalle">Open DALL.E</button>
+    <button class="bouton-personnalise2" onclick="facebook()" data-fonction="facebook">Open Facebook</button>
+    <button class="bouton-personnalise2" onclick="tag()" data-fonction="tag">Open tag.fr</button>
+    <button class="bouton-personnalise2" onclick="jeuxio()" data-fonction="jeuxio">Play games .io</button>
+    <button class="bouton-personnalise2" id="glitchButton" onclick="easterEgg()" data-fonction="easterEgg">Un secret bien gardé</button>   
+
+</div>
+
+<script>
+
+    function sncf() {
+      window.open("https://www.sncf-connect.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function airfrance() {
+      window.open("https://www.airfrance.fr/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function googleMaps() {
+      window.open("https://www.google.fr/maps/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function fuzeShop() {
+      window.open("https://www.fuzeshop.fr/");
+      argent += 9;
+        mettreAJourAffichageArgent();
+    }
+
+    function discord() {
+      window.open("https://www.discord.com/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function heure() {
+      window.open("https://time.is/fr/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function agenda() {
+      window.open("https://calendar.google.com/");
+      argent += 8;
+        mettreAJourAffichageArgent();
+    }
+
+    function drive() {
+      window.open("https://drive.google.com/");
+      argent += 8;
+        mettreAJourAffichageArgent();
+    }
+
+    function traduction() {
+      window.open("https://translate.google.fr/");
+      argent += 5
+        mettreAJourAffichageArgent();
+    }
+
+    function wikipédia() {
+      window.open("https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal");
+      argent += 10;
+        mettreAJourAffichageArgent();
+    }
+
+    function google() {
+      window.open("https://www.google.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function qwant() {
+      window.open("https://www.qwant.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function bing() {
+      window.open("https://www.bing.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function yahoo() {
+      window.open("https://fr.yahoo.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function ecosia() {
+      window.open("https://www.ecosia.org/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function twitter() {
+      window.open("https://twitter.com/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function twitch() {
+      window.open("https://www.twitch.tv/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function leMonde() {
+      window.open("https://www.lemonde.fr/");
+      argent += 11;
+        mettreAJourAffichageArgent();
+    }
+
+    function franceInfo() {
+      window.open("https://www.francetvinfo.fr/");
+      argent += 11;
+        mettreAJourAffichageArgent();
+    }
+
+    function cnews() {
+      window.open("https://www.cnews.fr/");
+      argent += 11;
+        mettreAJourAffichageArgent();
+    }
+
+    function chatGPT() {
+      window.open("https://chat.openai.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function copilot() {
+      window.open("https://copilot.microsoft.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function dalle() {
+      window.open("https://openai.com/dall-e-3");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function facebook() {
+      window.open("https://www.facebook.com");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function tag() {
+      window.open("https://www.tag.fr/");
+      argent += 6;
+        mettreAJourAffichageArgent();
+    }
+
+    function jeuxio() {
+      window.open("https://jeux.io/");
+      argent += 2;
+        mettreAJourAffichageArgent();
+    }
+
+    function checkBalance() {
+      alert("Your bank balance is 0 euro, you are in crisis. Ciao");
+    }
+
+    function easterEgg() {
+      alert("You have found one of the secrets of MULTRISTAN! We give you 50€ so that you do not reveal anything!");
+        argent += 50; // Ajouter 50 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openPronote() {
+      window.open("https://cas.ent.auvergnerhonealpes.fr/login?service=https%3A%2F%2Fwww.ent.auvergnerhonealpes.fr%2Fsg.do%3FPROC%3DIDENTIFICATION_FRONT");
+      argent += 7; // Ajouter 7 € à la monnaie
+        mettreAJourAffichageArgent();    
+}
+
+    function openYoutube() {
+      window.open("https://www.youtube.com/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function openAmazon() {
+      window.open("https://www.amazon.fr/");
+      argent += 5; // Ajouter 5 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openImpôts() {
+      window.open("https://www.impots.gouv.fr/");
+        argent += 10; // Ajouter 10 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openGmail() {
+      window.open("https://mail.google.com/mail/u/0/#inbox");
+      argent += 9; // Ajouter 9 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+function openCalculator() {
+      window.open("https://www.google.com/search?q=calculatrice&oq=calculatrice&aqs=chrome..69i57j0i131i433i512j0i433i512j0i512j0i433i512j0i131i433i512l3j0i512j0i433i512.4244j0j7&sourceid=chrome&ie=UTF-8");
+    argent += 7; // Ajouter 7 € à la monnaie
+        mettreAJourAffichageArgent();
+}
+
+    function convertToBinary() {
+      let inputText = prompt("Enter the text to convert to binary :");
+      if (inputText !== null && inputText !== "") {
+        let binaryResult = textToBinary(inputText);
+        alert("Text '" + inputText + "' in binary is :" + binaryResult);
+        if (confirm("Copy binary text to clipboard ?")) {
+          copyToClipboard(binaryResult);
+          alert("The binary text was copied to the clipboard.");
+        }
+      }
+argent += 12; // Ajouter 12 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function textToBinary(text) {
+      let binaryResult = "";
+      for (let i = 0; i < text.length; i++) {
+        let charCode = text.charCodeAt(i);
+        binaryResult += decToBin(charCode, 8);
+      }
+      return binaryResult;
+argent += 10; // Ajouter 10 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function decToBin(decimal, length) {
+      let binary = "";
+      while (decimal > 0) {
+        binary = (decimal % 2) + binary;
+        decimal = Math.floor(decimal / 2);
+      }
+      while (binary.length < length) {
+        binary = "0" + binary;
+      }
+      return binary;
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+    }
+
+    function searchWithMultristan() {
+      let sujet;
+      do {
+        sujet = prompt("What is the subject of your research ?", "Jihad’s money");
+        sujet = sujet.replace(/ /g, "+");
+        if (sujet === "") {
+          alert("goodbye");
+          break;
+        } else {
+          window.open("https://www.google.com/search?q=" + sujet);
+        }
+      } while (true);
+argent += 12; // Ajouter 12 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function generatePassword() {
+      let minLength = 6;
+      let maxLength = 10;
+      let passwordLength = Math.floor(Math.random() * (maxLength - minLength + 1) + minLength);
+      let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?`~";
+      let password = "";
+      for (let i = 0; i < passwordLength; i++) {
+        let randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset.charAt(randomIndex);
+      }
+      alert("Password generated: " + password);
+argent += 3; // Ajouter 3 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function checkEmail() {
+      let emailAddress = prompt("Enter an email address to verify:");
+      if (emailAddress !== null && emailAddress !== "") {
+        let regex = /^[\w\.-]+@[\w\.-]+\.\w{2,}$/;
+        if (regex.test(emailAddress)) {
+          alert("The email address is valid.");
+        } else {
+          alert("The email address is invalid.");
+argent += 3; // Ajouter 3 € à la monnaie
+        mettreAJourAffichageArgent();
+        }
+      }
+    }
+
+    function rollDice() {
+      let numberOfDice = prompt("Enter the number of dice to roll:");
+      if (numberOfDice !== null && numberOfDice !== "") {
+        let numberOfFaces = prompt("Enter the number of sides of each die:");
+        if (numberOfFaces !== null && numberOfFaces !== "") {
+          let total = 0;
+          let result;
+          let output = "Roll of dice results (" + numberOfDice + " dice with " + numberOfFaces + " faces each):\n";
+          for (let i = 0; i < numberOfDice; i++) {
+            result = Math.floor(Math.random() * numberOfFaces) + 1;
+            output += "Die " + (i + 1) + ": " + result + "\n";
+            total += result;
+          }
+          output += "Total: " + total;
+          alert(output);
+argent += 8; // Ajouter 8 € à la monnaie
+        mettreAJourAffichageArgent();
+        }
+      }
+    }
+
+    function playHangman() {
+      let words = ["computer", "program", "copilot", "hanged", "game", "cat", "dog", "lion", "tiger", "horse", "sheep", "duck", "pigeon", "rabbit", "giraffe", "apple", "banana", "orange", "lemon", "melon", "grape", "strawberry", "cherry", "pineapple", "mango", "tomato", "carrot", "onion", "garlic", "leek", "cabbage", "radish", "turnip", "spinach", "zucchini", "baker", "carpenter", "plumber", "nurse", "doctor", "lawyer", "teacher"];
+      let word = words[Math.floor(Math.random() * words.length)];
+      let hiddenWord = word.replace(/./g, "-");
+      let attempts = 7;
+      while (attempts > 0 && hiddenWord.includes("-")) {
+        let guess = prompt(hiddenWord + " (" + attempts + " remaining trials)\nEnter a letter").toLowerCase();
+        if (guess !== null && guess.length === 1 && guess.match(/[a-z]/)) {
+          let newHiddenWord = "";
+          for (let i = 0; i < word.length; i++) {
+            if (word[i] === guess) {
+              newHiddenWord += guess;
+            } else {
+              newHiddenWord += hiddenWord[i];
+            }
+          }
+          if (newHiddenWord === hiddenWord) {
+            attempts--;
+          }
+          hiddenWord = newHiddenWord;
+        }
+      }
+      if (!hiddenWord.includes("-")) {
+        alert("Congratulations! You guessed the word : " + word);
+      } else {
+        alert("Sorry, you lost. The word was : " + word);
+      }
+argent += 15; // Ajouter 15 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openRandomGame() {
+      let games = ["https://snake.io", "https://dinorunner.com/fr/", "https://capybara-clicker.com/"];
+      let randomIndex = Math.floor(Math.random() * games.length);
+      window.open(games[randomIndex]);
+argent += 5; // Ajouter 5 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function toggleVisibility() {
+      var programme = document.getElementById('programme');
+      var options = document.getElementById('options');
+      var calendrier = document.getElementById('calendrier');
+      var texteAuDessusCalendrier = document.getElementById('texteAuDessusCalendrier');
+      if (programme.style.display === 'none') {
+        programme.style.display = 'block';
+        options.style.display = 'none';
+        calendrier.style.display = 'block';
+        texteAuDessusCalendrier.style.display = 'block';
+      } else {
+        programme.style.display = 'none';
+        options.style.display = 'block';
+        calendrier.style.display = 'none';
+        texteAuDessusCalendrier.style.display = 'none';
+      }
+    }
+
+    function apparitionAvecEffet() {
+      setTimeout(function() {
+        var texte = document.getElementById('texte');
+        var texto = document.getElementById('texto');
+        var retours = document.getElementById('retours');
+        texte.style.opacity = 1;
+        texto.style.opacity = 1;
+        retours.style.opacity = 1;
+      }, 700);
+    }
+
+    window.onload = function() {
+      apparitionAvecEffet();
+    };
+
+function lierFonctionsAuxBoutons() {
+    var boutons = document.querySelectorAll('#resultats button');
+    boutons.forEach(function(bouton) {
+        bouton.addEventListener('click', function() {
+            var fonction = this.getAttribute('data-fonction');
+            if (fonction && typeof window[fonction] === 'function') {
+                window[fonction]();
+            }
+        });
+    });
+}
+
+// Obtenez une référence au champ de recherche
+var champRecherche = document.getElementById('champRecherche');
+
+// Ajoutez un écouteur d'événements pour l'événement input
+champRecherche.addEventListener('input', recherchePertinente);
+
+function recherchePertinente() {
+    var champRechercheValue = this.value.trim().toLowerCase(); // 'this' fait référence au champ de recherche
+    var boutons = document.getElementsByClassName('bouton-personnalise2');
+    var resultats = document.getElementById('resultats');
+
+    resultats.innerHTML = ''; // Effacer les résultats précédents
+
+    var resultatTrouve = false; // Indicateur pour savoir si un résultat a été trouvé
+
+    if (champRechercheValue !== '') {
+        var resultatHTML = '<div style="position: relative; top: 15px;">';
+        // Parcourir tous les boutons
+        for (var i = 0; i < boutons.length; i++) {
+            var bouton = boutons[i];
+            var texteBouton = bouton.textContent || bouton.innerText;
+
+            // Vérifier si le texte du bouton contient le terme recherché
+            if (texteBouton.toLowerCase().includes(champRechercheValue)) {
+                // Ajouter le nom de la fonction comme un attribut personnalisé
+                var fonction = bouton.getAttribute('data-fonction');
+                resultatHTML += '<button class="bouton-personnalise2" data-fonction="' + fonction + '">' + texteBouton + '</button>';
+                resultatTrouve = true; // Un résultat a été trouvé
+            }
+        }
+        resultatHTML += '</div>';
+        resultats.innerHTML = resultatHTML;
+
+        // Lier les fonctions aux boutons dans les résultats de la recherche
+        lierFonctionsAuxBoutons();
+    }
+
+    if (!resultatTrouve) {
+        // Si aucun résultat n'a été trouvé, afficher le message spécifié
+        resultats.innerHTML = '<p>The feature you are looking for is not available! Do not hesitate to ask for it via the returns form on the main page!</p>';
+    }
+}
+
+// Fonction d'initialisation pour masquer les boutons de fonctionnalité
+function masquerBoutonsFonctionnalite() {
+    var boutonsFonctionnalite = document.getElementsByClassName('bouton-personnalise2');
+
+    for (var i = 0; i < boutonsFonctionnalite.length; i++) {
+        boutonsFonctionnalite[i].style.display = 'none';
+    }
+}
+
+// Appeler la fonction d'initialisation dès que la page est chargée
+window.onload = function() {
+    masquerBoutonsFonctionnalite();
+    apparitionAvecEffet(); // Appeler votre autre fonction d'initialisation si nécessaire
+};
+
+function randomString(length) {
+  let result = '';
+  const characters = '01§&~#{[|`\^@]}¤$*%µ£¨^*/-+.';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+// Fonction pour appliquer l'effet de glitch au bouton
+function applyGlitch() {
+  const button = document.getElementById('glitchButton');
+  const originalText = button.textContent;
+  const glitchInterval = setInterval(() => {
+    button.textContent = randomString(originalText.length);
+  }, 50);
+
+  // Arrêter l'effet de glitch après un certain temps (par exemple 3 secondes=3000)
+  setTimeout(() => {
+    clearInterval(glitchInterval);
+    button.textContent = originalText;
+  }, 200000000);
+}
+
+// Appliquer l'effet de glitch au chargement de la page
+applyGlitch();
+
+function toggleBoutique() {
+    var programme = document.getElementById('programme');
+    var boutique = document.getElementById('boutique');
+    var calendrier = document.getElementById('calendrier');
+    if (programme.style.display !== 'block') {
+      programme.style.display = 'block';
+      boutique.style.display = 'none';
+      calendrier.style.display = 'block';
+    } else {
+      programme.style.display = 'none';
+      boutique.style.display = 'block';
+      calendrier.style.display = 'none';
+    }
+  }
+
+// Fonction pour effectuer un achat
+function fiouze(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          devenirRiche();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fond_noir(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondNoir();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondNoir() {
+            document.body.style.backgroundColor = "black";
+        }
+
+function devenirRiche() {
+    var textes = document.querySelectorAll('h1, h2, h3, h4, p, li, marquee'); // Sélectionner tous les éléments de texte que vous souhaitez modifier
+
+    // Parcourir tous les textes sélectionnés et changer leur couleur en dorée
+    textes.forEach(function(element) {
+        element.style.color = 'goldenrod';
+    });
+}
+  </script>
+
+<script>
+    // Étape 1: Définir une variable pour stocker la monnaie
+    let argent = 0;
+
+    // Étape 2: Créer une fonction pour ajouter de l'argent
+    function ajouterArgent() {
+        argent += 10; // Ajouter 10 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    // Étape 3: Mettre à jour l'affichage de la monnaie
+    function mettreAJourAffichageArgent() {
+        let affichageArgent = document.getElementById('argent');
+        affichageArgent.textContent = "Your money : " + argent + ' €';
+    }
+</script>
+<script>
+function fond_blanc(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondblanc();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondblanc() {
+            document.body.style.backgroundColor = "white";
+        }
+
+function fond_grisClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondgris();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondgris() {
+            document.body.style.backgroundColor = "#D3D3D3";
+        }
+
+function fond_grisFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondgrisFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondgrisFonce() {
+            document.body.style.backgroundColor = "#A9A9A9";
+        }
+
+function fond_vertClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondvertClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondvertClair() {
+            document.body.style.backgroundColor = "#90EE90";
+        }
+
+function fond_bleuCiel(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondbleuCiel();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondbleuCiel() {
+            document.body.style.backgroundColor = "#87CEEB";
+        }
+
+function fond_jaunePale(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondjaunePale();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondjaunePale() {
+            document.body.style.backgroundColor = "#FFFF99";
+        }
+
+function fond_rougeClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondrougeClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondrougeClair() {
+            document.body.style.backgroundColor = "#FF6961";
+        }
+
+function fond_rose(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondrose();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondrose() {
+            document.body.style.backgroundColor = "#FFC0CB";
+        }
+
+function fond_violet(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondviolet();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondviolet() {
+            document.body.style.backgroundColor = "#9370DB";
+        }
+
+function fond_orange(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondorange();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondorange() {
+            document.body.style.backgroundColor = "#FFA500";
+        }
+
+function fond_turquoise(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondturquoise();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondturquoise() {
+            document.body.style.backgroundColor = "#40E0D0";
+        }
+
+function fond_bleuFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondbleuFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondbleuFonce() {
+            document.body.style.backgroundColor = "#00008B";
+        }
+
+function fond_vertFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondvertFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondvertFonce() {
+            document.body.style.backgroundColor = "#006400";
+        }
+
+function fond_marron(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          fondmarron();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function fondmarron() {
+            document.body.style.backgroundColor = "#8B4513";
+        }
+
+function text_blanc(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textblanc();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textblanc() {
+          document.body.style.color = "#FFFFFF";
+        }
+
+function text_noir(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textnoir();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textnoir() {
+          document.body.style.color = "#000000";
+        }
+
+function text_grisClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textgrisClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textgrisClair() {
+          document.body.style.color = "#D3D3D3";
+        }
+
+function text_grisFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textgrisFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textgrisFonce() {
+          document.body.style.color = "A9A9A9";
+        }
+
+function text_bleuCiel(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textbleuCiel();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textbleuCiel() {
+          document.body.style.color = "#87CEEB";
+        }
+
+function text_vertClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textvertClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textvertClair() {
+          document.body.style.color = "#90EE90";
+        }
+
+function text_jaunePale(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textjaunePale();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textjaunePale() {
+          document.body.style.color = "#FFFF99";
+        }
+
+function text_rougeClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textrougeClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textrougeClair() {
+          document.body.style.color = "#FF6961";
+        }
+
+function text_rose(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textrose();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textrose() {
+          document.body.style.color = "#FFC0CB";
+        }
+
+function text_violet(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textviolet();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textviolet() {
+          document.body.style.color = "#9370DB";
+        }
+
+function text_orange(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textorange();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textorange() {
+          document.body.style.color = "#FFA500";
+        }
+
+function text_turquoise(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textturquoise();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textturquoise() {
+          document.body.style.color = "#40E0D0";
+        }
+
+function text_bleuFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textbleuFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textbleuFonce() {
+          document.body.style.color = "#00008B";
+        }
+
+function text_vertFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textvertFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textvertFonce() {
+          document.body.style.color = "#006400";
+        }
+
+function text_marron(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Product purchased successfully!");
+          textmarron();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("You don’t have enough money to buy this product!");
+    }
+}
+
+function textmarron() {
+          document.body.style.color = "#8B4513";
+        }
+</script>
+</body>
+</html>
