@@ -1,0 +1,3420 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MULTRISTAN v0.14</title>
+<style>
+        #chat-container {
+            width: 500px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-y: auto;
+            max-height: 600px; /* Limite la hauteur du chat */
+        }
+
+        .message {
+            margin-bottom: 15px; /* Espacement entre les messages */
+        }
+
+        .sender {
+            font-weight: bold; /* Met le nom du sender en gras */
+        }
+
+        #button-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+<style>
+
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+
+<style>
+    canvas {
+        border: 1px solid black;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+
+<style>
+body {
+            font-family: Arial, sans-serif;
+            background-color: #17A2B8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+#animationClicker {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+  #counter {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .upgrade-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .upgrade-column {
+    flex: 1;
+    text-align: left;
+  }
+  .upgrade {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .upgrade:hover {
+    background-color: #f0f0f0;
+  }
+  .bold {
+    font-weight: bold;
+  }
+</style>
+
+  <style>
+
+    .texte-centre {
+      text-align: center;
+      animation: fadeInDown 1s ease-out forwards;
+    }
+
+    .animPub4 {
+      animation: fadeInDown 1s ease-out forwards;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+#animation-news {
+      animation: fadeInDown 1s ease-out forwards;
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #options {
+      display: none;
+    }
+
+    /* Styles pour le bouton personnalisé */
+    .bouton-personnalise {
+        background-color: #4CAF50; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 15px 32px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 15px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise:hover {
+        background-color: #45a049; /* Couleur de fond différente au survol */
+    }
+
+.bouton-personnalise4 {
+        background-color: #FF8000; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 12px 25px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 15px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise4:hover {
+        background-color: #FFA500; /* Couleur de fond différente au survol */
+    }
+
+    /* Styles pour le bouton personnalisé */
+    .bouton-personnalise2 {
+        background-color: #B22222; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 9px 20px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 11px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise2:hover {
+        background-color: #8B0000; /* Couleur de fond différente au survol */
+    }
+
+/* Styles pour le bouton personnalisé */
+    .bouton-personnalise3 {
+        background-color: #B22222; /* Couleur de fond */
+        border: none; /* Pas de bordure */
+        color: white; /* Couleur du texte */
+        padding: 9px 20px; /* Espacement du texte à l'intérieur du bouton */
+        text-align: center; /* Alignement du texte */
+        text-decoration: none; /* Pas de soulignement */
+        display: inline-block; /* Affichage en ligne */
+        font-size: 11px; /* Taille de la police */
+        margin: 4px 2px; /* Marge autour du bouton */
+        cursor: pointer; /* Curseur au survol */
+        border-radius: 8px; /* Rayon de bordure arrondie */
+    }
+
+    /* Changement de style au survol */
+    .bouton-personnalise2:hover {
+        background-color: #8B0000; /* Couleur de fond différente au survol */
+    }
+
+    .bouton-personnalise5 {
+        background-color: #B22222;
+        border: none;
+        color: white;
+        padding: 9px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 11px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .bouton-personnalise5:hover {
+        background-color: #8B0000;
+    }
+
+#calendrier {
+  position: absolute;
+  top: 850px; /* distance en pixels depuis le haut de la fenêtre */
+  left: 650px; /* distance en pixels depuis la gauche de la fenêtre */
+}
+
+.bubble {
+        position: absolute;
+        top: 20px; /* distance en pixels depuis le haut de la fenêtre */
+        right: 10px; /* distance en pixels depuis la droite de la fenêtre */;
+        background-color: #f7f7f7;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        max-width: 220px;
+    }
+
+.pub1 {
+        position: absolute;
+        cursor: pointer;
+        top: 5px; /* distance en pixels depuis le haut de la fenêtre */
+        left: 5px; /* distance en pixels depuis la gauche de la fenêtre */;
+    }
+
+.pub2 {
+        position: absolute;
+        cursor: pointer;
+        top: 5px; /* distance en pixels depuis le haut de la fenêtre */
+        right: 5px; /* distance en pixels depuis la droite de la fenêtre */;
+    }
+
+.pub3 {
+        position: absolute;
+        cursor: pointer;
+        top: 1360px; /* distance en pixels depuis le haut de la fenêtre */
+        left: 650px; /* distance en pixels depuis la gauche de la fenêtre */;
+    }
+
+.pub4 {
+        position: absolute;
+        cursor: pointer;
+        top: 10px;
+        right: 10px;
+    }
+
+.bouton-cache {
+  display: none; /* Masquer les boutons non pertinents */
+}
+
+.cr {
+  display: none;
+}
+
+#argent {
+            position: fixed;
+            top: 25px;
+            left: 13px;
+            background-color: #fff; /* Couleur de fond */
+            color: 333; /* Couleur du texte */
+            padding: 5px 10px; /* Espacement intérieur */
+            border-radius: 5px; /* Bord arrondi */
+            font-size: 18px; /* Taille de la police */
+            font-family: Arial, sans-serif; /* Police de caractères */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre */
+        }
+
+#boutonBoutique {
+            position: absolute;
+            top: 1210px;
+            left: 650px;
+        }
+
+#gameCanvas {
+            position: absolute;
+            top: 10px;
+            left: 500px;
+        }
+
+#charles {
+            position: absolute;
+            top: 450px;
+            left: 650px;
+        }
+
+#butSerpent {
+            position: absolute;
+            top: 100px;
+            left: 230px;
+        }
+
+#consigneSerpent {
+            position: absolute;
+            top: 125px;
+            left: 100px;
+        }
+
+#backOption {
+            position: absolute;
+            top: 350px;
+            left: 623px;
+        }
+
+#butBriques {
+            position: absolute;
+            top: 400px;
+            left: 632px;
+        }
+
+#consigneBriques {
+            position: absolute;
+            top: 430px;
+            left: 545px;
+        }
+
+#consigneBriques2 {
+            position: absolute;
+            top: 430px;
+            left: 545px;
+        }
+
+#consigneBriques3 {
+            position: absolute;
+            top: 430px;
+            left: 545px;
+        }
+
+#backOption10 {
+            position: absolute;
+            top: 230px;
+            left: 155px;
+        }
+
+#butBird {
+            position: absolute;
+            top: 100px;
+            left: 160px;
+        }
+
+#consigneBird {
+            position: absolute;
+            top: 130px;
+            left: 105px;
+        }
+
+.gestion {
+        position: absolute;
+        top: 270px;
+        left: 10px;
+    }
+
+.education {
+        position: absolute;
+        top: 270px;
+        left: 310px;
+    }
+
+.services {
+        position: absolute;
+        top: 270px;
+        left: 650px;
+    }
+
+.navigation {
+        position: absolute;
+        top: 500px;
+        left: 10px;
+    }
+
+.resaux_sociaux {
+        position: absolute;
+        top: 500px;
+        left: 310px;
+    }
+
+.jeux {
+        position: absolute;
+        top: 500px;
+        left: 650px;
+    }
+
+.retours2 {
+        position: absolute;
+        top: 700px;
+        left: 0px;
+    }
+
+#champRecherche {
+            width: 200px; /* Largeur du champ de recherche */
+            padding: 10px; /* Remplissage intérieur du champ de recherche */
+            border: 1px solid #000000; /* Bordure du champ de recherche */
+            border-radius: 5px; /* Arrondi des coins du champ de recherche */
+            font-size: 16px; /* Taille de la police du champ de recherche */
+            outline: none; /* Supprime la mise en évidence du champ de recherche lorsqu'il est sélectionné */
+        }
+
+        #champRecherche::placeholder {
+            color: #999; /* Couleur du texte de l'attribut placeholder */
+        }
+
+#clickerTritri {
+  display: none;
+}
+
+#programme {
+  display: none;
+}
+
+.monCompte {
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    left: 50%;
+    transform: translateX(175px);
+    transform-origin: center;
+}
+
+.pp {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-150px);
+    transform-origin: center;
+}
+
+.username {
+    position: absolute;
+    top: 320px;
+    left: 50%;
+    transform: translateX(-70px);
+    transform-origin: center;
+}
+
+.disconnect {
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    transform: translateX(-60px);
+    transform-origin: center;
+}
+
+.backCompte {
+    position: absolute;
+    top: 560px;
+    left: 50%;
+    transform: translateX(-60px);
+    transform-origin: center;
+}
+
+</style>
+
+<style>
+.container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 300px;
+        }
+
+        .texte-connexion {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+<div id="argent">Votre argent : 0 €</div>
+
+    <div id="login" class="container">
+        <h2 class="texte-connexion">Connexion à MULTRISTAN</h2>
+        <form id="loginForm" action="#">
+            <input id="pseudoInput" type="text" placeholder="Pseudo">
+            <input id="passwordInput" type="password" placeholder="Mot de passe">
+            <input id="submitButton" type="submit" value="Se connecter">
+        </form>
+<br><br>
+    <marquee id="marquee">MULTRISTAN © // Novembre 2023 - Mai 2024 // créé par Fuze34081 // version : 0.14 // Téléchargez MULTRISTAN : https://github.com/Fuze34081/MULTRISTAN // Merci à DIAB Jihad, GOMEZ Matthias et SUEL Anatole</marquee>
+    </div>
+
+  <div id="programme">
+
+<iframe id="calendrier" src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FParis&bgcolor=%234285F4&showTitle=0&showNav=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=MzBhMDkwMTM5MzA1MjFkYmM4YTA5OWJkOTVlMjkwYWI3MGY5ZjdhOGY1M2JhZGY2Mjc5NzI4MTg2OTE2MWIwY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZnIuZnJlbmNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161&color=%230B8043" style="border:solid 1px #777" width="400" height="300" frameborder="0" scrolling="no"></iframe>
+
+    <div class="texte-centre">
+      <h1>MULTRISTAN</h1>
+      <h2>Bienvenue sur la version officiel de MULTRISTAN!</h2>
+      <h4>MULTRISTAN est un programme html créé pour aider les gens à accomplir leurs besoins au mieux.</h4>
+      <button class="bouton-personnalise" onclick="toggleVisibility()">Accéder au programme</button>
+    </div>
+
+<div id="texteAuDessusCalendrier" style="position: absolute; top: 805px; left: 650px;"><h4>Calendrier d'événements officiel de MULTRISTAN<h4></div>
+<div id="texto"><h2>Les fonctionnalités :</h2></div>
+<div class="gestion" id="gestion_bancaire_utilitaires">
+    <h3>Gestion bancaire et utilitaires :</h3>
+    <ul>
+        <li>Consulter son solde bancaire</li>
+        <li>Ouvrir la calculatrice</li>
+        <li>Générer un mot de passe sécurisé</li>
+        <li>Vérifier une adresse e-mail</li>
+        <li>Accéder aux impôts</li>
+        <li>Ouvrir l'assistance</li>
+    </ul>
+</div>
+
+<div class="education" id="education_divertissement">
+    <h3>Éducation et divertissement :</h3>
+    <ul>
+        <li>Ouvrir PRONOTE</li>
+        <li>Faire une recherche avec MULTRISTAN</li>
+        <li>Émulateur de dés</li>
+    </ul>
+</div>
+
+<div class="services" id="services_en_ligne">
+    <h3>Services en ligne :</h3>
+    <ul>
+        <li>Ouvrir Youtube</li>
+        <li>Ouvrir Amazon</li>
+        <li>Ouvrir Gmail</li>
+        <li>Ouvrir Outlook</li>
+        <li>Acheter des billets de train SNCF</li>
+        <li>Acheter des billets d'avion AirFrance</li>
+    </ul>
+</div>
+
+<div class="navigation" id="navigation_geolocalisation">
+    <h3>Navigation et géolocalisation :</h3>
+    <ul>
+        <li>Ouvrir Google Maps</li>
+        <li>Consulter l'heure du monde entier</li>
+        <li>Ouvrir Google Agenda</li>
+        <li>Accéder à Google Drive</li>
+        <li>Accéder à Google Traduction</li>
+    </ul>
+</div>
+
+<div class="resaux_sociaux" id="reseaux_sociaux_medias">
+    <h3>Réseaux sociaux et médias :</h3>
+    <ul>
+        <li>Ouvrir X (twitter)</li>
+        <li>Ouvrir Twitch</li>
+        <li>Ouvrir le Monde</li>
+        <li>Ouvrir France Info</li>
+        <li>Ouvrir Facebook</li>
+        <li>Ouvrir tag.fr</li>
+        <li>Ouvrir CNEWS</li>
+        <li>Ouvrir ChatGPT</li>
+        <li>Ouvrir Copilot</li>
+        <li>Ouvrir DALL.E</li>
+    </ul>
+</div>
+
+<div class="jeux" id="jeux">
+    <h3>Jeux :</h3>
+    <ul>
+        <li>Jouer au serpent</li>
+        <li>Jouer au pendu</li>
+        <li>Jouer au Casse briques</li>
+        <li>Lancer un jeu aléatoire</li>
+        <li>Jouer à des jeux .io</li>
+        <li>Jouer à Flappy Bird</li>
+        <li>Jouer à Tristan Clicker</li>
+    </ul>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <div id="retours"><h4>N'hésitez pas à faire des retours si vous constatez des bugs ou si vous avez des idées d'améliorations ! Les retours sont juste en dessous !⬇️</h4></div>
+
+<div id="animation-news" class="bubble">
+    <h3>Nouveautés v0.14<br><br></h3>
+    <p>- Ajout du Tristan Clicker<br>- Ajout de l'assistance<br>- Modifications des pubs<br>- Publicités désormais cliquables<br>- Modification du mode sombre<br>- Ajout de l'écran de connexion<br>- Correctifs de bugs</p>
+</div>
+
+<button class="bouton-personnalise" id="boutonBoutique" onclick="toggleBoutique()">Accéder à la boutique</button>
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScysocxPJuTkdUP9yeFo2SDyIG_AcG_kdhVMWVph-Iopa6jcQ/viewform?embedded=true" width="640" height="1885" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+  <div class="pub3"><img src="https://digistatement.com/wp-content/uploads/2021/03/Clash-Royale-Wallpapers-HD-min.jpg" alt="Erreur de chargement" onclick="pubCR()" width="360" height="202"></div>
+</div>
+
+<div>
+    <canvas id="canvas10" class="cr" width="400" height="600"></canvas>
+    <button id="backOption10" class="cr bouton-personnalise" onclick="toggleVisibility52()" data-fonction="toggleVisibility52">Retour</button>
+    <div id="butBird" class="cr"><h3>But du jeu :</h3></div>
+    <div id="consigneBird" class="cr"><p>Sautez avec la barre espace et<br>passez à travers les tubes verts !<br><br>Vous gagnez 2€ pour chaque tube franchi !</p></div>
+</div>
+
+<div>
+    <canvas id="gameCanvas" class="cr" width="400" height="400"></canvas>
+    <button id="charles" class="cr bouton-personnalise" onclick="toggleVisibility31()" data-fonction="toggleVisibility31">Retour</button>
+    <div id="butSerpent" class="cr"><h3>But du jeu :</h3></div>
+    <div id="consigneSerpent" class="cr"><p>Déplacez-vous avec les flèches de votre clavier<br>pour gober les carrés rouges !<br><br>Vous gagnez 1€ par carré que vous mangerez !</p></div>
+</div>
+
+<div class="cr" id="compte">
+<img class="pp" src="https://www.kindpng.com/picc/m/171-1712282_profile-icon-png-profile-icon-vector-png-transparent.png" alt="Erreur de chargement" width="300" height="300">
+<h4 class="username">Nom d'utilisateur :<br><br>En attente des données...<br><br><br>Mot de passe :<br><br>En attente des données...</h4>
+<button class="disconnect bouton-personnalise3" onclick="refresh()">Se déconnecter</button>
+<button class="backCompte bouton-personnalise" onclick="Compte()">Retour</button>
+</div>
+
+<div>
+    <canvas id="myCanvas" class="cr" width="730" height="320"></canvas>
+    <canvas id="myCanvas2" class="cr" width="815" height="320"></canvas>
+    <canvas id="myCanvas3" class="cr" width="900" height="320"></canvas>
+    <button id="backOption" class="cr bouton-personnalise" onclick="toggleVisibility22()" data-fonction="toggleVisibility22">Retour</button>
+    <div id="butBriques" class="cr"><h3>But du jeu :</h3></div>
+    <div id="consigneBriques" class="cr"><p>Déplacez-vous avec les flèches de votre clavier<br>pour faire rebondir la boule bleue<br>et détruire toutes les briques !<br><br>Vous gagnez 25€ si vous les éliminez tous !<br><br>Il y a 3 niveaux et vous êtes actuellement au niveau 1 !</p></div>
+    <div id="consigneBriques2" class="cr"><p>Déplacez-vous avec les flèches de votre clavier<br>pour faire rebondir la boule rouge<br>et détruire toutes les briques !<br><br>Vous gagnez 50€ si vous les éliminez tous !<br><br>Vous êtes au niveau 2 !</p></div>
+    <div id="consigneBriques3" class="cr"><p>Déplacez-vous avec les flèches de votre clavier<br>pour faire rebondir la boule orange<br>et détruire toutes les briques !<br><br>Vous gagnez 100€ si vous les éliminez tous !<br><br>Vous êtes au niveau 3 !</p></div>
+</div>
+
+<div id="clickerTritri">
+<div class="texte-centre">
+<h1>Tristan Clicker</h1>
+  <div id="counter">0</div>
+  <img src="https://www.nicepng.com/png/full/186-1864643_freddy-fazbear.png" width="150" height="150" alt="Cliquez ici !" id="animationClicker" onclick="incrementCounter()" />
+</div>
+  <div class="pub4 animPub4"><img src="https://www.lavanguardia.com/andro4all/hero/2024/04/squad-busters-portada.jpg" alt="Erreur de chargement" onclick="pubSquad()" width="260" height="146"></div>
+
+  <div class="upgrade-container">
+    <div class="upgrade-column">
+      <div class="upgrade" onclick="buyUpgrade(10, 'clickPoints', 1)" data-cost="10">
+        <span class="bold">Start fazbear</span><br><br>
+        <span class="bold">+1 Tristan/s</span> (Coût : 10 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(100, 'clickPoints', 5)" data-cost="100">
+        <span class="bold">Micro fazbear</span><br><br>
+        <span class="bold">+5 Tristan/s</span> (Coût : 100 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(400, 'clickPoints', 10)" data-cost="400">
+        <span class="bold">Petit fazbear</span><br><br>
+        <span class="bold">+10 Tristan/s</span> (Coût : 400 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(800, 'clickPoints', 20)" data-cost="800">
+        <span class="bold">Normal fazbear</span><br><br>
+        <span class="bold">+20 Tristan/s</span> (Coût : 800 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(2000, 'clickPoints', 50)" data-cost="2000">
+        <span class="bold">Très Grand fazbear</span><br><br>
+        <span class="bold">+50 Tristan/s</span> (Coût : 2000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(5000, 'clickPoints', 100)" data-cost="5000">
+        <span class="bold">Gigantesque fazbear</span><br><br>
+        <span class="bold">+100 Tristan/s</span> (Coût : 5000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(10000, 'clickPoints', 200)" data-cost="10000">
+        <span class="bold">Super fazbear</span><br><br>
+        <span class="bold">+200 Tristan/s</span> (Coût : 10.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(18000, 'clickPoints', 400)" data-cost="18000">
+        <span class="bold">Ultra fazbear</span><br><br>
+        <span class="bold">+400 Tristan/s</span> (Coût : 18.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(25000, 'clickPoints', 500)" data-cost="25000">
+        <span class="bold">Titan fazbear</span><br><br>
+        <span class="bold">+500 Tristan/s</span> (Coût : 25.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(50000, 'clickPoints', 1000)" data-cost="50000">
+        <span class="bold">Divin fazbear</span><br><br>
+        <span class="bold">+1.000 Tristan/s</span> (Coût : 50.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(500000, 'clickPoints', 10000)" data-cost="500000">
+        <span class="bold">Universel fazbear</span><br><br>
+        <span class="bold">+10.000 Tristan/s</span> (Coût : 500.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(5000000, 'clickPoints', 100000)" data-cost="5000000">
+        <span class="bold">Immense fazbear</span><br><br>
+        <span class="bold">+100.000 Tristan/s</span> (Coût : 5.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(50000000, 'clickPoints', 1000000)" data-cost="50000000">
+        <span class="bold">Magnifique fazbear</span><br><br>
+        <span class="bold">+1.000.000 Tristan/s</span> (Coût : 50.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(500000000, 'clickPoints', 10000000)" data-cost="500000000">
+        <span class="bold">Mythique fazbear</span><br><br>
+        <span class="bold">+10.000.000 Tristan/s</span> (Coût : 500.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(5000000000, 'clickPoints', 100000000)" data-cost="5000000000">
+        <span class="bold">Monumental fazbear</span><br><br>
+        <span class="bold">+100.000.000 Tristan/s</span> (Coût : 5.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(50000000000, 'clickPoints', 1000000000)" data-cost="50000000000">
+        <span class="bold">Colosse fazbear</span><br><br>
+        <span class="bold">+1.000.000.000 Tristan/s</span> (Coût : 50.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(500000000000, 'clickPoints', 10000000000)" data-cost="500000000000">
+        <span class="bold">Royal fazbear</span><br><br>
+        <span class="bold">+10.000.000.000 Tristan/s</span> (Coût : 500.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(5000000000000, 'clickPoints', 100000000000)" data-cost="5000000000000">
+        <span class="bold">Impressionnant fazbear</span><br><br>
+        <span class="bold">+100.000.000.000 Tristan/s</span> (Coût : 5.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(50000000000000, 'clickPoints', 1000000000000)" data-cost="50000000000000">
+        <span class="bold">Spectaculaire fazbear</span><br><br>
+        <span class="bold">+1.000.000.000.000 Tristan/s</span> (Coût : 50.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(500000000000000, 'clickPoints', 10000000000000)" data-cost="500000000000000">
+        <span class="bold">Incommensurable fazbear</span><br><br>
+        <span class="bold">+10.000.000.000.000 Tristan/s</span> (Coût : 500.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(50000000000000000, 'clickPoints', 100000000000000)" data-cost="50000000000000000">
+        <span class="bold">Infini fazbear</span><br><br>
+        <span class="bold">+100.000.000.000.000 Tristan/s</span> (Coût : 50.000.000.000.000.000 Tristan)
+      </div>
+    </div>
+
+    <div class="upgrade-column">
+      <div class="upgrade" onclick="buyUpgrade(20, 'clickValue', 1)" data-cost="20">
+        <span class="bold">Start Fazbear</span><br><br>
+        <span class="bold">+1 Tristan/clic</span> (Coût : 20 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(200, 'clickValue', 5)" data-cost="200">
+        <span class="bold">Mini Fazbear</span><br><br>
+        <span class="bold">+5 Tristan/clic</span> (Coût : 200 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(800, 'clickValue', 10)" data-cost="800">
+        <span class="bold">Moyen Fazbear</span><br><br>
+        <span class="bold">+10 Tristan/clic</span> (Coût : 800 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(1600, 'clickValue', 20)" data-cost="1600">
+        <span class="bold">Grand Fazbear</span><br><br>
+        <span class="bold">+20 Tristan/clic</span> (Coût : 1600 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(4000, 'clickValue', 50)" data-cost="4000">
+        <span class="bold">Énorme Fazbear</span><br><br>
+        <span class="bold">+50 Tristan/clic</span> (Coût : 4000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(10000, 'clickValue', 100)" data-cost="10000">
+        <span class="bold">Méga Fazbear</span><br><br>
+        <span class="bold">+100 Tristan/clic</span> (Coût : 10.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(20000, 'clickValue', 200)" data-cost="20000">
+        <span class="bold">Hyper Fazbear</span><br><br>
+        <span class="bold">+200 Tristan/clic</span> (Coût : 20.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(36000, 'clickValue', 400)" data-cost="36000">
+        <span class="bold">Giga Fazbear</span><br><br>
+        <span class="bold">+400 Tristan/clic</span> (Coût : 36.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(50000, 'clickValue', 500)" data-cost="50000">
+        <span class="bold">Suprême Fazbear</span><br><br>
+        <span class="bold">+500 Tristan/clic</span> (Coût : 50.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(100000, 'clickValue', 1000)" data-cost="100000">
+        <span class="bold">Légendaire Fazbear</span><br><br>
+        <span class="bold">+1000 Tristan/clic</span> (Coût : 100.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(1000000, 'clickValue', 10000)" data-cost="1000000">
+        <span class="bold">Colossal Fazbear</span><br><br>
+        <span class="bold">+10.000 Tristan/clic</span> (Coût : 1.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(10000000, 'clickValue', 100000)" data-cost="10000000">
+        <span class="bold">Époustouflant Fazbear</span><br><br>
+        <span class="bold">+100.000 Tristan/clic</span> (Coût : 10.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(1000000000, 'clickValue', 10000000)" data-cost="1000000000">
+        <span class="bold">Épique Fazbear</span><br><br>
+        <span class="bold">+10.000.000 Tristan/clic</span> (Coût : 1.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(100000000000, 'clickValue', 1000000000)" data-cost="100000000000">
+        <span class="bold">Majestueux Fazbear</span><br><br>
+        <span class="bold">+1.000.000.000 Tristan/clic</span> (Coût : 100.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(10000000000000, 'clickValue', 100000000000)" data-cost="10000000000000">
+        <span class="bold">Grandiose Fazbear</span><br><br>
+        <span class="bold">+100.000.000.000 Tristan/clic</span> (Coût : 10.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(1000000000000000, 'clickValue', 10000000000000)" data-cost="1000000000000000">
+        <span class="bold">Sublime Fazbear</span><br><br>
+        <span class="bold">+10.000.000.000.000 Tristan/clic</span> (Coût : 1.000.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(100000000000000000, 'clickValue', 1000000000000000)" data-cost="100000000000000000">
+        <span class="bold">Éblouissant Fazbear</span><br><br>
+        <span class="bold">+1.000.000.000.000.000 Tristan/clic</span> (Coût : 100.000.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(1000000000000000000, 'clickValue', 10000000000000000)" data-cost="1000000000000000000">
+        <span class="bold">Phénoménal Fazbear</span><br><br>
+        <span class="bold">+10.000.000.000.000.000 Tristan/clic</span> (Coût : 1.000.000.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(10000000000000000000, 'clickValue', 100000000000000000)" data-cost="10000000000000000000">
+        <span class="bold">Fantastique Fazbear</span><br><br>
+        <span class="bold">+100.000.000.000.000.000 Tristan/clic</span> (Coût : 10.000.000.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(100000000000000000000, 'clickValue', 1000000000000000000)" data-cost="100000000000000000000">
+        <span class="bold">Imposant Fazbear</span><br><br>
+        <span class="bold">+1.000.000.000.000.000.000 Tristan/clic</span> (Coût : 100.000.000.000.000.000.000 Tristan)
+      </div>
+      <div class="upgrade" onclick="buyUpgrade(10000000000000000000000, 'clickValue', 100000000000000000000)" data-cost="10000000000000000000000">
+        <span class="bold">Éternel Fazbear</span><br><br>
+        <span class="bold">+100.000.000.000.000.000.000 Tristan/clic</span> (Coût : 10.000.000.000.000.000.000.000 Tristan)
+      </div>
+
+    </div>
+  </div>
+ <button class="bouton-personnalise" onclick="toggleVisibilityClickerBack()">Retour</button>
+</div>
+
+<div id="Assistance" class="cr">
+    <div id="chat-container">
+        <div id="chat-display"></div>
+    </div>
+    <div id="button-container">
+        <button class="bouton-personnalise5" onclick="askQuestion('C\'est quoi MULTRISTAN ?')">C'est quoi MULTRISTAN ?</button>&ensp;
+        <button class="bouton-personnalise5" onclick="askQuestion('Comment faire des retours ?')">Comment faire des retours ?</button>&ensp;
+        <button class="bouton-personnalise5" onclick="askQuestion('Pourquoi des publicités ?')">Pourquoi des publicités ?</button><br><br>
+        <button class="bouton-personnalise5" onclick="askQuestion('Le clicker affiche un nombre bizarre')">Le clicker affiche un nombre bizarre</button>&ensp;
+        <button class="bouton-personnalise5" onclick="askQuestion('Qui est-tu ?')">Qui est-tu ?</button>&ensp;
+        <button class="bouton-personnalise5" onclick="askQuestion('Comment changer le fond et le texte ?')">Comment changer le fond et le texte ?</button><br><br>
+        <button class="bouton-personnalise5 cr" onclick="askQuestion('Problème 7')">Problème 7</button>&ensp;
+        <button class="bouton-personnalise5 cr" onclick="askQuestion('Problème 8')">Problème 8</button>&ensp;
+        <button class="bouton-personnalise5 cr" onclick="askQuestion('Problème 9')">Problème 9</button><br><br><br>
+        <button class="bouton-personnalise" onclick="toggleVisibilityAssistanceBack()">Retour</button>
+    </div>
+</div>
+
+<div id="boutique" class="texte-centre" style="display: none;">
+  <!-- Contenu de la boutique -->
+  <h1>Boutique</h1>
+  <p>Activer le mode sombre - Prix : 20€ <button onclick="modeSombre(20)">Acheter</button></p>
+  <p>Activer le mode clair - Prix : 20€ <button onclick="modeClair(20)">Acheter</button></p>
+<br>
+<br>
+  <p>Mettre le fond en noir - Prix : 15€ <button onclick="fond_noir(15)">Acheter</button></p>
+  <p>Mettre le fond en blanc - Prix : 5€ <button onclick="fond_blanc(5)">Acheter</button></p>
+  <p>Mettre le fond en gris clair - Prix : 15€ <button onclick="fond_grisClair(15)">Acheter</button></p>
+  <p>Mettre le fond en gris foncé - Prix : 15€ <button onclick="fond_grisFonce(15)">Acheter</button></p>
+  <p>Mettre le fond en vert clair - Prix : 15€ <button onclick="fond_vertClair(15)">Acheter</button></p>
+  <p>Mettre le fond en bleu ciel - Prix : 15€ <button onclick="fond_bleuCiel(15)">Acheter</button></p>
+  <p>Mettre le fond en jaune pâle - Prix : 15€ <button onclick="fond_jaunePale(15)">Acheter</button></p>
+  <p>Mettre le fond en rouge clair - Prix : 15€ <button onclick="fond_rougeClair(15)">Acheter</button></p>
+  <p>Mettre le fond en rose - Prix : 15€ <button onclick="fond_rose(15)">Acheter</button></p>
+  <p>Mettre le fond en violet - Prix : 15€ <button onclick="fond_violet(15)">Acheter</button></p>
+  <p>Mettre le fond en orange - Prix : 15€ <button onclick="fond_orange(15)">Acheter</button></p>
+  <p>Mettre le fond en turquoise - Prix : 15€ <button onclick="fond_turquoise(15)">Acheter</button></p>
+  <p>Mettre le fond en bleu foncé - Prix : 15€ <button onclick="fond_bleuFonce(15)">Acheter</button></p>
+  <p>Mettre le fond en vert foncé - Prix : 15€ <button onclick="fond_vertFonce(15)">Acheter</button></p>
+  <p>Mettre le fond en marron - Prix : 15€ <button onclick="fond_marron(15)">Acheter</button></p>
+  <br>
+  <br>
+  <p>Mettre le texte couleur dorée - Prix : 25€ <button onclick="fiouze(25)">Acheter</button></p>
+<p>Mettre le texte en blanc - Prix : 20€ <button onclick="text_blanc(20)">Acheter</button></p>
+<p>Mettre le texte en noir - Prix : 10€ <button onclick="text_noir(10)">Acheter</button></p>
+<p>Mettre le texte en gris clair - Prix : 20€ <button onclick="text_grisClair(20)">Acheter</button></p>
+<p>Mettre le texte en gris foncé - Prix : 20€ <button onclick="text_grisFonce(20)">Acheter</button></p>
+<p>Mettre le texte en bleu ciel - Prix : 20€ <button onclick="text_bleuCiel(20)">Acheter</button></p>
+<p>Mettre le texte en vert clair - Prix : 20€ <button onclick="text_vertClair(20)">Acheter</button></p>
+<p>Mettre le texte en jaune pâle - Prix : 20€ <button onclick="text_jaunePale(20)">Acheter</button></p>
+<p>Mettre le texte en rouge clair - Prix : 20€ <button onclick="text_rougeClair(20)">Acheter</button></p>
+<p>Mettre le texte en rose - Prix : 20€ <button onclick="text_rose(20)">Acheter</button></p>
+<p>Mettre le texte en violet - Prix : 20€ <button onclick="text_violet(20)">Acheter</button></p>
+<p>Mettre le texte en orange - Prix : 20€ <button onclick="text_orange(20)">Acheter</button></p>
+<p>Mettre le texte en turquoise - Prix : 20€ <button onclick="text_turquoise(20)">Acheter</button></p>
+<p>Mettre le texte en bleu foncé - Prix : 20€ <button onclick="text_bleuFonce(20)">Acheter</button></p>
+<p>Mettre le texte en vert foncé - Prix : 20€ <button onclick="text_vertFonce(20)">Acheter</button></p>
+<p>Mettre le texte en marron - Prix : 20€ <button onclick="text_marron(20)">Acheter</button></p>
+<br>
+<h4>Plus de styles sur la version Premium</h4>
+<br>
+  <button class="bouton-personnalise" onclick="toggleBoutique()">Retour</button>
+</div>
+
+  <div class="texte-centre" id="options">
+    <h1>MULTRISTAN v0.14</h1>
+    <p>Veuillez choisir une option :</p>
+<br>
+    <button class="bouton-personnalise" onclick="toggleVisibility()">Retour</button>
+<div class="pub1"><img src="https://fuzeshop.fr/cdn/shop/collections/Peluche_1400x.jpg?v=1638356092" alt="Erreur de chargement" onclick="fuzeShop()" width="310" height="174"></div>
+<div class="pub2"><img src="https://squadbusters.supercell.com/_nuxt/image/a11b18.svg" alt="Erreur de chargement" onclick="pubSquad()" width="310" height="174"></div>
+<img class="monCompte" src="https://www.kindpng.com/picc/m/171-1712282_profile-icon-png-profile-icon-vector-png-transparent.png" alt="Mon compte" onclick="Compte()" width="100" height="100">
+<br>
+<br>
+<div id="recherche">
+  <input type="text" id="champRecherche" placeholder="Rechercher...">
+</div>
+<div id="resultats" style="position: relative; top: 15px;"></div>
+<div id="resultats"></div>
+<br>
+<br>
+
+<h2>Les plus utilisés :</h2><br>
+<button class="bouton-personnalise4" onclick="openYoutube()">Ouvrir Youtube</button>
+<button class="bouton-personnalise4" onclick="toggleVisibilityAssistance()">Ouvrir l'assistance</button>
+<br>
+<br>
+<button class="bouton-personnalise4" onclick="toggleVisibilityClicker()">Jouer à Tristan Clicker</button>
+<button class="bouton-personnalise4" onclick="openGmail()">Ouvrir Gmail</button>
+<br>
+<br>
+<button class="bouton-personnalise4" onclick="playHangman()">Jouer au pendu</button>
+<button class="bouton-personnalise4" onclick="toggleVisibility51()">Jouer à Flappy Bird</button>
+<br>
+<br>
+<button class="bouton-personnalise4" onclick="toggleVisibility32()">Jouer au serpent</button>
+<button class="bouton-personnalise4" onclick="toggleVisibility21()">Jouer au Casse briques</button>
+
+    <button class="bouton-personnalise2" onclick="checkBalance()" data-fonction="checkBalance">Consulter votre solde bancaire</button>
+    <button class="bouton-personnalise2" onclick="openPronote()" data-fonction="openPronote">Ouvrir PRONOTE</button>
+    <button class="bouton-personnalise2" onclick="openCalculator()" data-fonction="openCalculator">Ouvrir la calculatrice</button>
+    <button class="bouton-personnalise2" onclick="convertToBinary()" data-fonction="convertToBinary">Convertir en binaire</button>
+    <button class="bouton-personnalise2" onclick="searchWithMultristan()" data-fonction="searchWithMultristan">Faire une recherche avec MULTRISTAN</button>
+    <button class="bouton-personnalise2" onclick="generatePassword()" data-fonction="generatePassword">Générer un mot de passe sécurisé</button>
+    <button class="bouton-personnalise2" onclick="checkEmail()" data-fonction="checkEmail">Vérifier une adresse e-mail</button>
+    <button class="bouton-personnalise2" onclick="rollDice()" data-fonction="rollDice">Émulateur de dés</button>
+    <button class="bouton-personnalise2" onclick="playHangman()" data-fonction=playHangman">Jouer au pendu</button>
+    <button class="bouton-personnalise2" onclick="openRandomGame()" data-fonction="openRandomGame">Lancer un jeu aléatoire</button> 
+    <button class="bouton-personnalise2" onclick="openYoutube()" data-fonction="openYoutube">Ouvrir Youtube</button>
+    <button class="bouton-personnalise2" onclick="openAmazon()" data-fonction="openAmazon">Ouvrir Amazon</button>
+    <button class="bouton-personnalise2" onclick="openImpôts()" data-fonction="openImpôts">Accéder aux impots</button>
+    <button class="bouton-personnalise2" onclick="openGmail()" data-fonction="openGmail">Ouvrir Gmail</button>
+    <button class="bouton-personnalise2" onclick="sncf()" data-fonction="sncf">Acheter des billets de train SNCF</button>
+    <button class="bouton-personnalise2" onclick="airfrance()" data-fonction="airfrance">Acheter des billets d'avion AirFrance</button>
+    <button class="bouton-personnalise2" onclick="googleMaps()" data-fonction="googleMaps">Ouvrir Google Maps</button>
+    <button class="bouton-personnalise2" onclick="fuzeShop()" data-fonction="fuzeShop">Accéder au Fuze Shop</button>
+    <button class="bouton-personnalise2" onclick="discord()" data-fonction="discord">Ouvrir Discord</button>
+    <button class="bouton-personnalise2" onclick="heure()" data-fonction="heure">Consulter l'heure du monde entier</button>
+    <button class="bouton-personnalise2" onclick="agenda()" data-fonction="agenda">Ouvrir Google Agenda</button>
+    <button class="bouton-personnalise2" onclick="drive()" data-fonction="drive">Ouvrir Google Drive</button>
+    <button class="bouton-personnalise2" onclick="traduction()" data-fonction="traduction">Ouvrir Google Traduction</button>
+    <button class="bouton-personnalise2" onclick="wikipédia()" data-fonction="wikipédia">Ouvrir Wikipédia</button>
+    <button class="bouton-personnalise2" onclick="google()" data-fonction="google">Accéder à Google</button>
+    <button class="bouton-personnalise2" onclick="qwant()" data-fonction="qwant">Accéder à Qwant</button>
+    <button class="bouton-personnalise2" onclick="bing()" data-fonction="bing">Accéder à Microsoft Bing</button>
+    <button class="bouton-personnalise2" onclick="yahoo()" data-fonction="yahoo">Accéder à Yahoo</button>
+    <button class="bouton-personnalise2" onclick="ecosia()" data-fonction="ecosia">Accéder à Ecosia</button>
+    <button class="bouton-personnalise2" onclick="twitter()" data-fonction="twitter">Ouvrir X (twitter)</button>
+    <button class="bouton-personnalise2" onclick="twitch()" data-fonction="twitch">Ouvrir Twitch</button>
+    <button class="bouton-personnalise2" onclick="leMonde()" data-fonction="leMonde">Ouvrir Le Monde</button>
+    <button class="bouton-personnalise2" onclick="franceInfo()" data-fonction="franceInfo">Ouvrir France Info</button>
+    <button class="bouton-personnalise2" onclick="cnews()" data-fonction="cnews">Ouvrir CNEWS</button>
+    <button class="bouton-personnalise2" onclick="chatGPT()" data-fonction="chatGPT">Ouvrir ChatGPT</button>
+    <button class="bouton-personnalise2" onclick="copilot()" data-fonction="copilot">Ouvrir Copilot</button>
+    <button class="bouton-personnalise2" onclick="dalle()" data-fonction="dalle">Ouvrir DALL.E</button>
+    <button class="bouton-personnalise2" onclick="facebook()" data-fonction="facebook">Ouvrir Facebook</button>
+    <button class="bouton-personnalise2" onclick="tag()" data-fonction="tag">Ouvrir tag.fr</button>
+    <button class="bouton-personnalise2" onclick="jeuxio()" data-fonction="jeuxio">Jouer à des jeux .io</button>
+    <button class="bouton-personnalise2" id="glitchButton" onclick="easterEgg()" data-fonction="easterEgg">Un secret bien gardé</button>   
+    <button class="bouton-personnalise2" onclick="toggleVisibility32()" data-fonction="toggleVisibility32" >Jouer au Serpent</button>
+    <button class="bouton-personnalise2" onclick="toggleVisibility21()" data-fonction="toggleVisibility21" >Jouer au Casse briques</button>
+    <button class="bouton-personnalise2" onclick="openOutlook()" data-fonction="openOutlook">Ouvrir Outlook</button>
+    <button class="bouton-personnalise2" onclick="toggleVisibility51()" data-fonction="toggleVisibility51" >Jouer à Flappy Bird</button>
+    <button class="bouton-personnalise2" onclick="toggleVisibilityClicker()" data-fonction="toggleVisibilityClicker" >Jouer à Tristan Clicker</button>
+    <button class="bouton-personnalise2" onclick="toggleVisibilityAssistance()" data-fonction="toggleVisibilityAssistance" >Ouvrir l'assistance</button>
+    <button class="bouton-personnalise2" onclick="escapeGameChezBK()" data-fonction="escapeGameChezBK">Escape game chez BK</button>
+</div>
+
+<script>
+
+function Compte() {
+    var options = document.getElementById('options');
+    var compte = document.getElementById('compte');
+
+    if (options.style.display === 'block') {
+        options.style.display = 'none';
+        compte.style.display = 'block';
+    } else {
+        options.style.display = 'block';
+        compte.style.display = 'none';
+    }
+}
+
+function toggleVisibilityAssistance() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var Assistance = document.getElementById('Assistance');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'none';
+        Assistance.style.display = 'block';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        Assistance.style.display = 'block';
+    }
+}
+
+function toggleVisibilityAssistanceBack() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var Assistance = document.getElementById('Assistance');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'block';
+        Assistance.style.display = 'none';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        Assistance.style.display = 'block';
+    }
+}
+
+function toggleVisibilityClicker() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var clickerTritri = document.getElementById('clickerTritri');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'none';
+        clickerTritri.style.display = 'block';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        clickerTritri.style.display = 'block';
+    }
+}
+
+function toggleVisibilityClickerBack() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var clickerTritri = document.getElementById('clickerTritri');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'block';
+        clickerTritri.style.display = 'none';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        clickerTritri.style.display = 'block';
+    }
+}
+
+function toggleVisibility51() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var canvas10 = document.getElementById('canvas10');
+    var backOption10 = document.getElementById('backOption10');
+    var consigneBird = document.getElementById('consigneBird');
+    var butBird = document.getElementById('butBird');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'none';
+        canvas10.style.display = 'block';
+        backOption10.style.display = 'block';
+        consigneBird.style.display = 'block';
+        butBird.style.display = 'block';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        canvas10.style.display = 'none';
+        backOption10.style.display = 'none';
+        consigneBird.style.display = 'none';
+        butBird.style.display = 'none';
+    }
+}
+
+function toggleVisibility52() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var canvas10 = document.getElementById('canvas10');
+    var backOption10 = document.getElementById('backOption10');
+    var consigneBird = document.getElementById('consigneBird');
+    var butBird = document.getElementById('butBird');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'block';
+        canvas10.style.display = 'none';
+        backOption10.style.display = 'none';
+        consigneBird.style.display = 'none';
+        butBird.style.display = 'none';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        canvas10.style.display = 'none';
+        backOption10.style.display = 'none';
+        consigneBird.style.display = 'none';
+        butBird.style.display = 'none';
+    }
+}
+
+function toggleVisibility32() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var calendrier = document.getElementById('calendrier');
+    var texteAuDessusCalendrier = document.getElementById('texteAuDessusCalendrier');
+    var gameCanvas = document.getElementById('gameCanvas');
+    var charles = document.getElementById('charles');
+    var butSerpent = document.getElementById('butSerpent');
+    var consigneSerpent = document.getElementById('consigneSerpent');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'none';
+        calendrier.style.display = 'none';
+        texteAuDessusCalendrier.style.display = 'none';
+        gameCanvas.style.display = 'block';
+        charles.style.display = 'block';
+        butSerpent.style.display = 'block';
+        consigneSerpent.style.display = 'block';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        calendrier.style.display = 'block';
+        texteAuDessusCalendrier.style.display = 'block';
+        gameCanvas.style.display = 'none';
+        charles.style.display = 'none';
+        butSerpent.style.display = 'none';
+        consigneSerpent.style.display = 'none';
+    }
+}
+
+
+function toggleVisibility31() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var calendrier = document.getElementById('calendrier');
+    var texteAuDessusCalendrier = document.getElementById('texteAuDessusCalendrier');
+    var gameCanvas = document.getElementById('gameCanvas');
+    var charles = document.getElementById('charles');
+    var butSerpent = document.getElementById('butSerpent');
+    var consigneSerpent = document.getElementById('consigneSerpent');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'block';
+        calendrier.style.display = 'none';
+        texteAuDessusCalendrier.style.display = 'none';
+        gameCanvas.style.display = 'none';
+        charles.style.display = 'none';
+        butSerpent.style.display = 'none';
+        consigneSerpent.style.display = 'none';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        calendrier.style.display = 'block';
+        texteAuDessusCalendrier.style.display = 'block';
+        gameCanvas.style.display = 'none';
+        charles.style.display = 'none';
+        butSerpent.style.display = 'none';
+        consigneSerpent.style.display = 'none';
+    }
+}
+
+function toggleVisibility21() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var calendrier = document.getElementById('calendrier');
+    var texteAuDessusCalendrier = document.getElementById('texteAuDessusCalendrier');
+    var myCanvas = document.getElementById('myCanvas');
+    var backOption = document.getElementById('backOption');
+    var butBriques = document.getElementById('butBriques');
+    var consigneBriques = document.getElementById('consigneBriques');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'none';
+        calendrier.style.display = 'none';
+        texteAuDessusCalendrier.style.display = 'none';
+        myCanvas.style.display = 'block';
+        backOption.style.display = 'block';
+        butBriques.style.display = 'block';
+        consigneBriques.style.display = 'block';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        calendrier.style.display = 'block';
+        texteAuDessusCalendrier.style.display = 'block';
+        myCanvas.style.display = 'none';
+        backOption.style.display = 'none';
+        butBriques.style.display = 'none';
+        consigneBriques.style.display = 'none';
+    }
+}
+
+function toggleVisibility22() {
+    var programme = document.getElementById('programme');
+    var options = document.getElementById('options');
+    var calendrier = document.getElementById('calendrier');
+    var texteAuDessusCalendrier = document.getElementById('texteAuDessusCalendrier');
+    var myCanvas = document.getElementById('myCanvas');
+    var myCanvas2 = document.getElementById('myCanvas2');
+    var backOption = document.getElementById('backOption');
+    var butBriques = document.getElementById('butBriques');
+    var consigneBriques = document.getElementById('consigneBriques');
+    var consigneBriques2 = document.getElementById('consigneBriques2');
+
+    if (programme.style.display === 'none') {
+        programme.style.display = 'none';
+        options.style.display = 'block';
+        calendrier.style.display = 'none';
+        texteAuDessusCalendrier.style.display = 'none';
+        myCanvas.style.display = 'none';
+        myCanvas2.style.display = 'none';
+        backOption.style.display = 'none';
+        butBriques.style.display = 'none';
+        consigneBriques.style.display = 'none';
+        consigneBriques2.style.display = 'none';
+        consigneBriques3.style.display = 'none';
+    } else {
+        programme.style.display = 'block';
+        options.style.display = 'block';
+        calendrier.style.display = 'block';
+        texteAuDessusCalendrier.style.display = 'block';
+        myCanvas.style.display = 'none';
+        myCanvas2.style.display = 'none';
+        backOption.style.display = 'none';
+        butBriques.style.display = 'none';
+        consigneBriques.style.display = 'none';
+        consigneBriques2.style.display = 'none';
+        consigneBriques3.style.display = 'none';
+    }
+}
+
+
+    function sncf() {
+      window.open("https://www.sncf-connect.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function airfrance() {
+      window.open("https://www.airfrance.fr/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function googleMaps() {
+      window.open("https://www.google.fr/maps/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function fuzeShop() {
+      window.open("https://www.fuzeshop.fr/");
+      argent += 9;
+        mettreAJourAffichageArgent();
+    }
+
+    function pubSquad() {
+      window.open("https://squadbusters.supercell.com/");
+      argent += 10;
+        mettreAJourAffichageArgent();
+    }
+
+    function pubCR() {
+      window.open("https://supercell.com/en/games/clashroyale/");
+      argent += 10;
+        mettreAJourAffichageArgent();
+    }
+
+    function discord() {
+      window.open("https://www.discord.com/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function heure() {
+      window.open("https://time.is/fr/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function agenda() {
+      window.open("https://calendar.google.com/");
+      argent += 8;
+        mettreAJourAffichageArgent();
+    }
+
+    function drive() {
+      window.open("https://drive.google.com/");
+      argent += 8;
+        mettreAJourAffichageArgent();
+    }
+
+    function traduction() {
+      window.open("https://translate.google.fr/");
+      argent += 5
+        mettreAJourAffichageArgent();
+    }
+
+    function wikipédia() {
+      window.open("https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal");
+      argent += 10;
+        mettreAJourAffichageArgent();
+    }
+
+    function google() {
+      window.open("https://www.google.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function qwant() {
+      window.open("https://www.qwant.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function bing() {
+      window.open("https://www.bing.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function yahoo() {
+      window.open("https://fr.yahoo.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function ecosia() {
+      window.open("https://www.ecosia.org/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function twitter() {
+      window.open("https://twitter.com/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function twitch() {
+      window.open("https://www.twitch.tv/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function leMonde() {
+      window.open("https://www.lemonde.fr/");
+      argent += 11;
+        mettreAJourAffichageArgent();
+    }
+
+    function franceInfo() {
+      window.open("https://www.francetvinfo.fr/");
+      argent += 11;
+        mettreAJourAffichageArgent();
+    }
+
+    function cnews() {
+      window.open("https://www.cnews.fr/");
+      argent += 11;
+        mettreAJourAffichageArgent();
+    }
+
+    function chatGPT() {
+      window.open("https://chat.openai.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function copilot() {
+      window.open("https://copilot.microsoft.com/");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function dalle() {
+      window.open("https://openai.com/dall-e-3");
+      argent += 5;
+        mettreAJourAffichageArgent();
+    }
+
+    function facebook() {
+      window.open("https://www.facebook.com");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function tag() {
+      window.open("https://www.tag.fr/");
+      argent += 6;
+        mettreAJourAffichageArgent();
+    }
+
+    function jeuxio() {
+      window.open("https://jeux.io/");
+      argent += 2;
+        mettreAJourAffichageArgent();
+    }
+
+    function checkBalance() {
+      var pseudo = document.getElementById("pseudoInput").value;
+      alert("Votre solde bancaire est de 0 euro, vous êtes en crise. Ciao "+ pseudo +"");
+    }
+
+    function easterEgg() {
+      var pseudo = document.getElementById("pseudoInput").value;
+      alert("Félicitations "+ pseudo +", vous avez trouver un des secrets de MULTRISTAN ! On vous donne 50€ pour que vous ne révélez rien !");
+        argent += 50; // Ajouter 50 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openPronote() {
+      window.open("https://cas.ent.auvergnerhonealpes.fr/login?service=https%3A%2F%2Fwww.ent.auvergnerhonealpes.fr%2Fsg.do%3FPROC%3DIDENTIFICATION_FRONT");
+      argent += 7; // Ajouter 7 € à la monnaie
+        mettreAJourAffichageArgent();    
+}
+
+    function openYoutube() {
+      window.open("https://www.youtube.com/");
+      argent += 4;
+        mettreAJourAffichageArgent();
+    }
+
+    function openAmazon() {
+      window.open("https://www.amazon.fr/");
+      argent += 5; // Ajouter 5 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openImpôts() {
+      window.open("https://www.impots.gouv.fr/");
+        argent += 10; // Ajouter 10 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openGmail() {
+      window.open("https://mail.google.com/mail/u/0/#inbox");
+      argent += 9; // Ajouter 9 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openOutlook() {
+      window.open("https://outlook.live.com/mail/0/");
+      argent += 9; // Ajouter 9 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+function openCalculator() {
+      window.open("https://www.google.com/search?q=calculatrice&oq=calculatrice&aqs=chrome..69i57j0i131i433i512j0i433i512j0i512j0i433i512j0i131i433i512l3j0i512j0i433i512.4244j0j7&sourceid=chrome&ie=UTF-8");
+    argent += 7; // Ajouter 7 € à la monnaie
+        mettreAJourAffichageArgent();
+}
+
+    function convertToBinary() {
+      var pseudo = document.getElementById("pseudoInput").value;
+      let inputText = prompt("Entrez le texte à convertir en binaire :");
+      if (inputText !== null && inputText !== "") {
+        let binaryResult = textToBinary(inputText);
+        alert("Le texte '" + inputText + "' en binaire est : " + binaryResult);
+        if (confirm("Copier le texte en binaire dans le presse-papiers ?")) {
+          copyToClipboard(binaryResult);
+          alert("Le texte en binaire a bien été copié dans le presse-papiers "+ pseudo +".");
+        }
+      }
+argent += 12; // Ajouter 12 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function textToBinary(text) {
+      let binaryResult = "";
+      for (let i = 0; i < text.length; i++) {
+        let charCode = text.charCodeAt(i);
+        binaryResult += decToBin(charCode, 8);
+      }
+      return binaryResult;
+argent += 10; // Ajouter 10 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function decToBin(decimal, length) {
+      let binary = "";
+      while (decimal > 0) {
+        binary = (decimal % 2) + binary;
+        decimal = Math.floor(decimal / 2);
+      }
+      while (binary.length < length) {
+        binary = "0" + binary;
+      }
+      return binary;
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+    }
+
+    function searchWithMultristan() {
+      var pseudo = document.getElementById("pseudoInput").value;
+      let sujet;
+      do {
+        sujet = prompt("Quel est le sujet de votre recherche ?", "L'argent de Jihad");
+        sujet = sujet.replace(/ /g, "+");
+        if (sujet === "") {
+          alert("Au revoir "+ pseudo +"");
+          break;
+        } else {
+          window.open("https://www.google.com/search?q=" + sujet);
+        }
+      } while (true);
+argent += 12; // Ajouter 12 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function generatePassword() {
+      let minLength = 8;
+      let maxLength = 10;
+      let passwordLength = Math.floor(Math.random() * (maxLength - minLength + 1) + minLength);
+      let charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?`~";
+      let password = "";
+      for (let i = 0; i < passwordLength; i++) {
+        let randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset.charAt(randomIndex);
+      }
+      alert("Mot de passe généré : " + password);
+argent += 3; // Ajouter 3 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function checkEmail() {
+      var pseudo = document.getElementById("pseudoInput").value;
+      let emailAddress = prompt("Entrez une adresse e-mail à vérifier :");
+      if (emailAddress !== null && emailAddress !== "") {
+        let regex = /^[\w\.-]+@[\w\.-]+\.\w{2,}$/;
+        if (regex.test(emailAddress)) {
+          alert("L'adresse e-mail est valide.");
+        } else {
+          alert("Attention "+ pseudo+ ", l'adresse e-mail n'est pas valide.");
+argent += 3; // Ajouter 3 € à la monnaie
+        mettreAJourAffichageArgent();
+        }
+      }
+    }
+
+    function rollDice() {
+      var pseudo = document.getElementById("pseudoInput").value;
+      let numberOfDice = prompt("Bonjour "+ pseudo +". Entrez le nombre de dés à lancer :");
+      if (numberOfDice !== null && numberOfDice !== "") {
+        let numberOfFaces = prompt("Entrez le nombre de faces de chaque dé :");
+        if (numberOfFaces !== null && numberOfFaces !== "") {
+          let total = 0;
+          let result;
+          let output = "Résultats du lancer de dés (" + numberOfDice + " dés avec " + numberOfFaces + " faces chacun):\n";
+          for (let i = 0; i < numberOfDice; i++) {
+            result = Math.floor(Math.random() * numberOfFaces) + 1;
+            output += "Dé " + (i + 1) + ": " + result + "\n";
+            total += result;
+          }
+          output += "Total: " + total;
+          alert(output);
+argent += 8; // Ajouter 8 € à la monnaie
+        mettreAJourAffichageArgent();
+        }
+      }
+    }
+
+    function playHangman() {
+      var pseudo = document.getElementById("pseudoInput").value;
+      let words = ["ordinateur", "programme", "copilot", "pendu", "jeu", "chat", "chien", "lion", "tigre", "cheval", "mouton", "canard", "pigeon", "lapin", "girafe", "pomme", "banane", "orange", "citron", "melon", "raisin", "fraise", "cerise", "ananas", "mangue", "tomate", "carotte", "oignon", "ail", "poireau", "chou", "radis", "navet", "épinard", "courgette", "boulanger", "charpentier", "plombier", "infirmier", "médecin", "avocat", "professeur", "policier", "pompier", "acteur", "autoroute", "boulevard", "chemin", "rue", "avenue", "allée", "impasse", "route", "voie", "périphérique"];
+      let word = words[Math.floor(Math.random() * words.length)];
+      let hiddenWord = word.replace(/./g, "-");
+      let attempts = 7;
+      while (attempts > 0 && hiddenWord.includes("-")) {
+        let guess = prompt(hiddenWord + " (" + attempts + " essais restants)\nEntrez une lettre").toLowerCase();
+        if (guess !== null && guess.length === 1 && guess.match(/[a-z]/)) {
+          let newHiddenWord = "";
+          for (let i = 0; i < word.length; i++) {
+            if (word[i] === guess) {
+              newHiddenWord += guess;
+            } else {
+              newHiddenWord += hiddenWord[i];
+            }
+          }
+          if (newHiddenWord === hiddenWord) {
+            attempts--;
+          }
+          hiddenWord = newHiddenWord;
+        }
+      }
+      if (!hiddenWord.includes("-")) {
+        alert("Félicitations "+ pseudo +", vous avez deviné le mot : " + word);
+      } else {
+        alert("Désolé, vous avez perdu. Le mot était : " + word);
+      }
+argent += 15; // Ajouter 15 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function openRandomGame() {
+      let games = ["https://snake.io", "https://dinorunner.com/fr/", "https://capybara-clicker.com/"];
+      let randomIndex = Math.floor(Math.random() * games.length);
+      window.open(games[randomIndex]);
+argent += 5; // Ajouter 5 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    function toggleVisibility() {
+      var programme = document.getElementById('programme');
+      var options = document.getElementById('options');
+      var calendrier = document.getElementById('calendrier');
+      var texteAuDessusCalendrier = document.getElementById('texteAuDessusCalendrier');
+      if (programme.style.display === 'none') {
+        programme.style.display = 'block';
+        options.style.display = 'none';
+        calendrier.style.display = 'block';
+        texteAuDessusCalendrier.style.display = 'block';
+      } else {
+        programme.style.display = 'none';
+        options.style.display = 'block';
+        calendrier.style.display = 'none';
+        texteAuDessusCalendrier.style.display = 'none';
+      }
+    }
+
+    function apparitionAvecEffet() {
+      setTimeout(function() {
+        var texte = document.getElementById('texte');
+        var texto = document.getElementById('texto');
+        var retours = document.getElementById('retours');
+        texte.style.opacity = 1;
+        texto.style.opacity = 1;
+        retours.style.opacity = 1;
+      }, 700);
+    }
+
+    window.onload = function() {
+      apparitionAvecEffet();
+    };
+
+function lierFonctionsAuxBoutons() {
+    var boutons = document.querySelectorAll('#resultats button');
+    boutons.forEach(function(bouton) {
+        bouton.addEventListener('click', function() {
+            var fonction = this.getAttribute('data-fonction');
+            if (fonction && typeof window[fonction] === 'function') {
+                window[fonction]();
+            }
+        });
+    });
+}
+
+// Obtenez une référence au champ de recherche
+var champRecherche = document.getElementById('champRecherche');
+
+// Ajoutez un écouteur d'événements pour l'événement input
+champRecherche.addEventListener('input', recherchePertinente);
+
+function recherchePertinente() {
+    var champRechercheValue = this.value.trim().toLowerCase(); // 'this' fait référence au champ de recherche
+    var boutons = document.getElementsByClassName('bouton-personnalise2');
+    var resultats = document.getElementById('resultats');
+
+    resultats.innerHTML = ''; // Effacer les résultats précédents
+
+    var resultatTrouve = false; // Indicateur pour savoir si un résultat a été trouvé
+
+    if (champRechercheValue !== '') {
+        var resultatHTML = '<div style="position: relative; top: 15px;">';
+        // Parcourir tous les boutons
+        for (var i = 0; i < boutons.length; i++) {
+            var bouton = boutons[i];
+            var texteBouton = bouton.textContent || bouton.innerText;
+
+            // Vérifier si le texte du bouton contient le terme recherché
+            if (texteBouton.toLowerCase().includes(champRechercheValue)) {
+                // Ajouter le nom de la fonction comme un attribut personnalisé
+                var fonction = bouton.getAttribute('data-fonction');
+                resultatHTML += '<button class="bouton-personnalise2" data-fonction="' + fonction + '">' + texteBouton + '</button>';
+                resultatTrouve = true; // Un résultat a été trouvé
+            }
+        }
+        resultatHTML += '</div>';
+        resultats.innerHTML = resultatHTML;
+
+        // Lier les fonctions aux boutons dans les résultats de la recherche
+        lierFonctionsAuxBoutons();
+    }
+
+    if (!resultatTrouve) {
+        // Si aucun résultat n'a été trouvé, afficher le message spécifié
+        resultats.innerHTML = '<p>La fonctionnalité que vous avez recherchée n\'est pas disponible ! N\'hésitez pas à la demander via le formulaire de retours présent sur la page principale !</p>';
+    }
+}
+
+// Fonction d'initialisation pour masquer les boutons de fonctionnalité
+function masquerBoutonsFonctionnalite() {
+    var boutonsFonctionnalite = document.getElementsByClassName('bouton-personnalise2');
+
+    for (var i = 0; i < boutonsFonctionnalite.length; i++) {
+        boutonsFonctionnalite[i].style.display = 'none';
+    }
+}
+
+// Appeler la fonction d'initialisation dès que la page est chargée
+window.onload = function() {
+    masquerBoutonsFonctionnalite();
+    apparitionAvecEffet(); // Appeler votre autre fonction d'initialisation si nécessaire
+};
+
+function randomString(length) {
+  let result = '';
+  const characters = '01§&~#{[|`\^@]}¤$*%µ£¨^*/-+.';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+// Fonction pour appliquer l'effet de glitch au bouton
+function applyGlitch() {
+  const button = document.getElementById('glitchButton');
+  const originalText = button.textContent;
+  const glitchInterval = setInterval(() => {
+    button.textContent = randomString(originalText.length);
+  }, 50);
+
+  // Arrêter l'effet de glitch après un certain temps (par exemple 3 secondes=3000)
+  setTimeout(() => {
+    clearInterval(glitchInterval);
+    button.textContent = originalText;
+  }, 200000000);
+}
+
+// Appliquer l'effet de glitch au chargement de la page
+applyGlitch();
+
+function toggleBoutique() {
+    var programme = document.getElementById('programme');
+    var boutique = document.getElementById('boutique');
+    var calendrier = document.getElementById('calendrier');
+    if (programme.style.display !== 'block') {
+      programme.style.display = 'block';
+      boutique.style.display = 'none';
+      calendrier.style.display = 'block';
+    } else {
+      programme.style.display = 'none';
+      boutique.style.display = 'block';
+      calendrier.style.display = 'none';
+    }
+  }
+
+// Fonction pour effectuer un achat
+function fiouze(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          devenirRiche();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fond_noir(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondNoir();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondNoir() {
+            document.body.style.backgroundColor = "black";
+        }
+
+function devenirRiche() {
+    var textes = document.querySelectorAll('h1, h2, h3, h4, p, li, marquee'); // Sélectionner tous les éléments de texte que vous souhaitez modifier
+
+    // Parcourir tous les textes sélectionnés et changer leur couleur en dorée
+    textes.forEach(function(element) {
+        element.style.color = 'goldenrod';
+    });
+}
+  </script>
+
+<script>
+    // Étape 1: Définir une variable pour stocker la monnaie
+    let argent = 0;
+
+    // Étape 2: Créer une fonction pour ajouter de l'argent
+    function ajouterArgent() {
+        argent += 10; // Ajouter 10 € à la monnaie
+        mettreAJourAffichageArgent();
+    }
+
+    // Étape 3: Mettre à jour l'affichage de la monnaie
+    function mettreAJourAffichageArgent() {
+        let affichageArgent = document.getElementById('argent');
+        affichageArgent.textContent = "Votre argent : " + argent + ' €';
+    }
+</script>
+<script>
+function fond_blanc(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondblanc();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondblanc() {
+            document.body.style.backgroundColor = "white";
+        }
+
+function fond_grisClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondgris();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondgris() {
+            document.body.style.backgroundColor = "#D3D3D3";
+        }
+
+function fond_grisFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondgrisFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondgrisFonce() {
+            document.body.style.backgroundColor = "#A9A9A9";
+        }
+
+function fond_vertClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondvertClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondvertClair() {
+            document.body.style.backgroundColor = "#90EE90";
+        }
+
+function fond_bleuCiel(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondbleuCiel();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondbleuCiel() {
+            document.body.style.backgroundColor = "#87CEEB";
+        }
+
+function fond_jaunePale(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondjaunePale();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondjaunePale() {
+            document.body.style.backgroundColor = "#FFFF99";
+        }
+
+function fond_rougeClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondrougeClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondrougeClair() {
+            document.body.style.backgroundColor = "#FF6961";
+        }
+
+function fond_rose(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondrose();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondrose() {
+            document.body.style.backgroundColor = "#FFC0CB";
+        }
+
+function fond_violet(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondviolet();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondviolet() {
+            document.body.style.backgroundColor = "#9370DB";
+        }
+
+function fond_orange(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondorange();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondorange() {
+            document.body.style.backgroundColor = "#FFA500";
+        }
+
+function fond_turquoise(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondturquoise();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondturquoise() {
+            document.body.style.backgroundColor = "#40E0D0";
+        }
+
+function fond_bleuFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondbleuFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondbleuFonce() {
+            document.body.style.backgroundColor = "#00008B";
+        }
+
+function fond_vertFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondvertFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondvertFonce() {
+            document.body.style.backgroundColor = "#006400";
+        }
+
+function fond_marron(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          fondmarron();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function fondmarron() {
+            document.body.style.backgroundColor = "#8B4513";
+        }
+
+function text_blanc(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textblanc();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textblanc() {
+          document.body.style.color = "#FFFFFF";
+        }
+
+function text_noir(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textnoir();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textnoir() {
+          document.body.style.color = "#000000";
+        }
+
+function text_grisClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textgrisClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textgrisClair() {
+          document.body.style.color = "#D3D3D3";
+        }
+
+function text_grisFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textgrisFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textgrisFonce() {
+          document.body.style.color = "A9A9A9";
+        }
+
+function text_bleuCiel(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textbleuCiel();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textbleuCiel() {
+          document.body.style.color = "#87CEEB";
+        }
+
+function text_vertClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textvertClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textvertClair() {
+          document.body.style.color = "#90EE90";
+        }
+
+function text_jaunePale(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textjaunePale();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textjaunePale() {
+          document.body.style.color = "#FFFF99";
+        }
+
+function text_rougeClair(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textrougeClair();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textrougeClair() {
+          document.body.style.color = "#FF6961";
+        }
+
+function text_rose(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textrose();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textrose() {
+          document.body.style.color = "#FFC0CB";
+        }
+
+function text_violet(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textviolet();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textviolet() {
+          document.body.style.color = "#9370DB";
+        }
+
+function text_orange(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textorange();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textorange() {
+          document.body.style.color = "#FFA500";
+        }
+
+function text_turquoise(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textturquoise();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textturquoise() {
+          document.body.style.color = "#40E0D0";
+        }
+
+function text_bleuFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textbleuFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textbleuFonce() {
+          document.body.style.color = "#00008B";
+        }
+
+function text_vertFonce(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textvertFonce();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textvertFonce() {
+          document.body.style.color = "#006400";
+        }
+
+function text_marron(montant) {
+    // Vérifier si l'utilisateur a suffisamment d'argent pour acheter le produit
+    if (argent >= montant) {
+        // Déduire le montant du produit du solde de l'utilisateur
+        argent -= montant;
+        // Mettre à jour l'affichage du solde
+        mettreAJourAffichageArgent();
+        // Afficher un message de confirmation de l'achat
+        alert("Produit acheté avec succès !");
+          textmarron();
+    } else {
+        // Si l'utilisateur n'a pas suffisamment d'argent, afficher un message d'erreur
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function textmarron() {
+          document.body.style.color = "#8B4513";
+        }
+
+function modeSombre(montant) {
+    if (argent >= montant) {
+        argent -= montant;
+        mettreAJourAffichageArgent();
+        alert("Produit acheté avec succès !");
+          mode_sombre();
+    } else {
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function mode_sombre() {
+          document.body.style.color = "#FFFFFF";
+          document.body.style.backgroundColor = "#555555";
+          var bulles = document.getElementsByClassName("bubble");
+          for (var i = 0; i < bulles.length; i++) {
+          bulles[i].style.backgroundColor = "#555555";
+            }
+        }
+
+function modeClair(montant) {
+    if (argent >= montant) {
+        argent -= montant;
+        mettreAJourAffichageArgent();
+        alert("Produit acheté avec succès !");
+          mode_clair();
+    } else {
+        alert("Vous n'avez pas assez d'argent pour acheter ce produit !");
+    }
+}
+
+function mode_clair() {
+          document.body.style.color = "black";
+          document.body.style.backgroundColor = "#FFFFFF";
+        }
+</script>
+
+<script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const box = 20; // Taille d'une case
+        let snake = [{ x: 10 * box, y: 10 * box }]; // Position initiale du serpent
+        let food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box }; // Position initiale de la nourriture
+        let direction;
+        let gameInterval;
+
+        // Contrôle du serpent
+        document.addEventListener("keydown", directionControl);
+
+        function directionControl(event) {
+            if (event.keyCode === 37 && direction !== "RIGHT") {
+                direction = "LEFT";
+            } else if (event.keyCode === 38 && direction !== "DOWN") {
+                direction = "UP";
+            } else if (event.keyCode === 39 && direction !== "LEFT") {
+                direction = "RIGHT";
+            } else if (event.keyCode === 40 && direction !== "UP") {
+                direction = "DOWN";
+            }
+        }
+
+        // Fonction pour dessiner le serpent
+        function drawSnake() {
+            snake.forEach(segment => {
+                ctx.fillStyle = "#000";
+                ctx.fillRect(segment.x, segment.y, box, box);
+            });
+        }
+
+        // Fonction pour dessiner la nourriture
+        function drawFood() {
+            ctx.fillStyle = "#ff0000";
+            ctx.fillRect(food.x, food.y, box, box);
+        }
+
+        // Vérifier les collisions avec les bords
+        function checkCollision(head) {
+            return head.x < 0 || head.y < 0 || head.x >= canvas.width || head.y >= canvas.height;
+        }
+
+        // Fonction principale du jeu
+        function game() {
+            // Effacer la toile à chaque mise à jour
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Déplacer le serpent
+            let head = { x: snake[0].x, y: snake[0].y };
+            if (direction === "LEFT") head.x -= box;
+            if (direction === "UP") head.y -= box;
+            if (direction === "RIGHT") head.x += box;
+            if (direction === "DOWN") head.y += box;
+
+            // Vérifier les collisions avec les bords
+            if (checkCollision(head)) {
+                // Réinitialiser le jeu
+                clearInterval(gameInterval);
+                snake = [{ x: 10 * box, y: 10 * box }];
+                food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
+                direction = null;
+                gameInterval = setInterval(game, 100);
+                return;
+            }
+
+            // Ajouter une nouvelle tête
+            snake.unshift(head);
+
+            // Si le serpent mange la nourriture
+            if (head.x === food.x && head.y === food.y) {
+                food = { x: Math.floor(Math.random() * 20) * box, y: Math.floor(Math.random() * 20) * box };
+                argent += 1;
+                document.getElementById("argent").innerText = "Votre argent : " + argent + " €";} 
+                else {
+                // Supprimer la queue du serpent
+                snake.pop();
+            }
+
+            // Dessiner le serpent et la nourriture
+            drawSnake();
+            drawFood();
+        }
+
+        // Lancer le jeu
+        gameInterval = setInterval(game, 100);
+    </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Récupérer le canvas et le contexte
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // Paramètres du jeu
+    var brickRowCount = 5;
+    var brickColumnCount = 8;
+    var brickWidth = 75;
+    var brickHeight = 20;
+    var brickPadding = 10;
+    var brickOffsetTop = 30;
+    var brickOffsetLeft = 30;
+    var totalBricks = brickRowCount * brickColumnCount;
+    var bricksBroken = 0;
+
+    // Tableau pour stocker les briques
+    var bricks = [];
+    resetBricks();
+
+    function resetBricks() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            bricks[c] = [];
+            for (var r = 0; r < brickRowCount; r++) {
+                bricks[c][r] = { x: 0, y: 0, status: 1 };
+            }
+        }
+    }
+
+    // Fonction pour dessiner les briques
+    function drawBricks() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            for (var r = 0; r < brickRowCount; r++) {
+                if (bricks[c][r].status == 1) {
+                    var brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+                    var brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+    }
+
+    // Variables pour la balle
+    var ballRadius = 10;
+    var x = canvas.width / 2;
+    var y = canvas.height - 30;
+    var dx = 2;
+    var dy = -2;
+
+    // Fonction pour dessiner la balle
+    function drawBall() {
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Fonction pour détecter les collisions avec les briques
+    function collisionDetection() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            for (var r = 0; r < brickRowCount; r++) {
+                var b = bricks[c][r];
+                if (b.status == 1) {
+                    if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        bricksBroken++;
+                        if (bricksBroken === totalBricks) {
+                            alert("Félicitations, vous venez de gagner 25€ ! Passons au niveau 2 !");
+                            argent += 25;
+                            document.getElementById("argent").innerText = "Votre argent : " + argent + " €";
+                            document.getElementById("myCanvas").style.display = "none";
+                            document.getElementById("myCanvas2").style.display = "block";
+                            document.getElementById("consigneBriques2").style.display = "block";
+                            document.getElementById("consigneBriques").style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Fonction de dessin principal
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBricks();
+        drawBall();
+        collisionDetection();
+
+        // Rebondir sur les bords
+        if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+            dx = -dx;
+        }
+        if (y + dy < ballRadius) {
+            dy = -dy;
+        } else if (y + dy > canvas.height - ballRadius) {
+            if (x > paddleX && x < paddleX + paddleWidth) {
+                dy = -dy;
+            } else {
+                bricksBroken = 0; // Réinitialiser le compteur de briques cassées
+                resetBricks(); // Réinitialiser les briques
+                x = canvas.width / 2; // Réinitialiser la position de la balle
+                y = canvas.height - 30;
+                dx = 2; // Réinitialiser la direction de la balle
+                dy = -2;
+            }
+        }
+
+        x += dx;
+        y += dy;
+    }
+
+    // Variables pour la raquette
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width - paddleWidth) / 2;
+
+    // Fonction pour dessiner la raquette
+    function drawPaddle() {
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Gestionnaire d'événements pour contrôler la raquette
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    var rightPressed = false;
+    var leftPressed = false;
+
+    function keyDownHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = true;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = true;
+        }
+    }
+
+    function keyUpHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = false;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = false;
+        }
+    }
+
+    // Fonction de mise à jour de la position de la raquette
+    function updatePaddlePosition() {
+        if (rightPressed && paddleX < canvas.width - paddleWidth) {
+            paddleX += 7;
+        } else if (leftPressed && paddleX > 0) {
+            paddleX -= 7;
+        }
+    }
+
+    // Fonction de dessin et de mise à jour de l'état du jeu
+    function main() {
+        draw();
+        drawPaddle();
+        updatePaddlePosition();
+        requestAnimationFrame(main);
+    }
+
+    main();
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Récupérer le canvas et le contexte
+    var canvas = document.getElementById("myCanvas2");
+    var ctx = canvas.getContext("2d");
+
+    // Paramètres du jeu
+    var brickRowCount = 6;
+    var brickColumnCount = 9;
+    var brickWidth = 75;
+    var brickHeight = 20;
+    var brickPadding = 10;
+    var brickOffsetTop = 30;
+    var brickOffsetLeft = 30;
+    var totalBricks = brickRowCount * brickColumnCount;
+    var bricksBroken = 0;
+
+    // Tableau pour stocker les briques
+    var bricks = [];
+    resetBricks();
+
+    function resetBricks() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            bricks[c] = [];
+            for (var r = 0; r < brickRowCount; r++) {
+                bricks[c][r] = { x: 0, y: 0, status: 1 };
+            }
+        }
+    }
+
+    // Fonction pour dessiner les briques
+    function drawBricks() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            for (var r = 0; r < brickRowCount; r++) {
+                if (bricks[c][r].status == 1) {
+                    var brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+                    var brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.fillStyle = "#A30000";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+    }
+
+    // Variables pour la balle
+    var ballRadius = 10;
+    var x = canvas.width / 2;
+    var y = canvas.height - 30;
+    var dx = 2.5;
+    var dy = -2.5;
+
+    // Fonction pour dessiner la balle
+    function drawBall() {
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+        ctx.fillStyle = "#A30000";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Fonction pour détecter les collisions avec les briques
+    function collisionDetection() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            for (var r = 0; r < brickRowCount; r++) {
+                var b = bricks[c][r];
+                if (b.status == 1) {
+                    if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        bricksBroken++;
+                        if (bricksBroken === totalBricks) {
+                            argent += 50;
+                            document.getElementById("argent").innerText = "Votre argent : " + argent + " €";
+                            document.getElementById("myCanvas2").style.display = "none";
+                            document.getElementById("consigneBriques2").style.display = "none";
+                            document.getElementById("myCanvas3").style.display = "block";
+                            document.getElementById("consigneBriques3").style.display = "block";
+                            alert("Vous venez de terminer le niveau 2 !");
+                            alert("Félicitations, vous venez de gagner 50€");
+                            alert("Passons maintenant au dernier niveau, le niveau 3 !");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Fonction de dessin principal
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBricks();
+        drawBall();
+        collisionDetection();
+
+        // Rebondir sur les bords
+        if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+            dx = -dx;
+        }
+        if (y + dy < ballRadius) {
+            dy = -dy;
+        } else if (y + dy > canvas.height - ballRadius) {
+            if (x > paddleX && x < paddleX + paddleWidth) {
+                dy = -dy;
+            } else {
+                bricksBroken = 0; // Réinitialiser le compteur de briques cassées
+                resetBricks(); // Réinitialiser les briques
+                x = canvas.width / 2; // Réinitialiser la position de la balle
+                y = canvas.height - 30;
+                dx = 2.5; // Réinitialiser la direction de la balle
+                dy = -2.5;
+            }
+        }
+
+        x += dx;
+        y += dy;
+    }
+
+    // Variables pour la raquette
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width - paddleWidth) / 2;
+
+    // Fonction pour dessiner la raquette
+    function drawPaddle() {
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#A30000";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Gestionnaire d'événements pour contrôler la raquette
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    var rightPressed = false;
+    var leftPressed = false;
+
+    function keyDownHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = true;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = true;
+        }
+    }
+
+    function keyUpHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = false;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = false;
+        }
+    }
+
+    // Fonction de mise à jour de la position de la raquette
+    function updatePaddlePosition() {
+        if (rightPressed && paddleX < canvas.width - paddleWidth) {
+            paddleX += 7;
+        } else if (leftPressed && paddleX > 0) {
+            paddleX -= 7;
+        }
+    }
+
+    // Fonction de dessin et de mise à jour de l'état du jeu
+    function main() {
+        draw();
+        drawPaddle();
+        updatePaddlePosition();
+        requestAnimationFrame(main);
+    }
+
+    main();
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Récupérer le canvas et le contexte
+    var canvas = document.getElementById("myCanvas3");
+    var ctx = canvas.getContext("2d");
+
+    // Paramètres du jeu
+    var brickRowCount = 7;
+    var brickColumnCount = 10;
+    var brickWidth = 75;
+    var brickHeight = 20;
+    var brickPadding = 10;
+    var brickOffsetTop = 30;
+    var brickOffsetLeft = 30;
+    var totalBricks = brickRowCount * brickColumnCount;
+    var bricksBroken = 0;
+
+    // Tableau pour stocker les briques
+    var bricks = [];
+    resetBricks();
+
+    function resetBricks() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            bricks[c] = [];
+            for (var r = 0; r < brickRowCount; r++) {
+                bricks[c][r] = { x: 0, y: 0, status: 1 };
+            }
+        }
+    }
+
+    // Fonction pour dessiner les briques
+    function drawBricks() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            for (var r = 0; r < brickRowCount; r++) {
+                if (bricks[c][r].status == 1) {
+                    var brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+                    var brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.fillStyle = "#FFA500";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+    }
+
+    // Variables pour la balle
+    var ballRadius = 8;
+    var x = canvas.width / 2;
+    var y = canvas.height - 30;
+    var dx = 2.8;
+    var dy = -2.8;
+
+    // Fonction pour dessiner la balle
+    function drawBall() {
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+        ctx.fillStyle = "#FFA500";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Fonction pour détecter les collisions avec les briques
+    function collisionDetection() {
+        for (var c = 0; c < brickColumnCount; c++) {
+            for (var r = 0; r < brickRowCount; r++) {
+                var b = bricks[c][r];
+                if (b.status == 1) {
+                    if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        bricksBroken++;
+                        if (bricksBroken === totalBricks) {
+                            alert("Félicitations, vous avez terminer tous les niveaux !");
+                            argent += 100;
+                            document.getElementById("argent").innerText = "Votre argent : " + argent + " €";
+                            document.getElementById("myCanvas").style.display = "block";
+                            document.getElementById("consigneBriques").style.display = "block";
+                            document.getElementById("myCanvas3").style.display = "none";
+                            document.getElementById("consigneBriques3").style.display = "none";
+                            alert("Vous venez de gagner 100€");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Fonction de dessin principal
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBricks();
+        drawBall();
+        collisionDetection();
+
+        // Rebondir sur les bords
+        if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+            dx = -dx;
+        }
+        if (y + dy < ballRadius) {
+            dy = -dy;
+        } else if (y + dy > canvas.height - ballRadius) {
+            if (x > paddleX && x < paddleX + paddleWidth) {
+                dy = -dy;
+            } else {
+                bricksBroken = 0; // Réinitialiser le compteur de briques cassées
+                resetBricks(); // Réinitialiser les briques
+                x = canvas.width / 2; // Réinitialiser la position de la balle
+                y = canvas.height - 30;
+                dx = 2.5; // Réinitialiser la direction de la balle
+                dy = -2.5;
+            }
+        }
+
+        x += dx;
+        y += dy;
+    }
+
+    // Variables pour la raquette
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width - paddleWidth) / 2;
+
+    // Fonction pour dessiner la raquette
+    function drawPaddle() {
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#FFA500";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Gestionnaire d'événements pour contrôler la raquette
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+    var rightPressed = false;
+    var leftPressed = false;
+
+    function keyDownHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = true;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = true;
+        }
+    }
+
+    function keyUpHandler(e) {
+        if (e.key == "Right" || e.key == "ArrowRight") {
+            rightPressed = false;
+        } else if (e.key == "Left" || e.key == "ArrowLeft") {
+            leftPressed = false;
+        }
+    }
+
+    // Fonction de mise à jour de la position de la raquette
+    function updatePaddlePosition() {
+        if (rightPressed && paddleX < canvas.width - paddleWidth) {
+            paddleX += 7;
+        } else if (leftPressed && paddleX > 0) {
+            paddleX -= 7;
+        }
+    }
+
+    // Fonction de dessin et de mise à jour de l'état du jeu
+    function main() {
+        draw();
+        drawPaddle();
+        updatePaddlePosition();
+        requestAnimationFrame(main);
+    }
+
+    main();
+});
+</script>
+
+<script>
+        const canvasBird = document.getElementById('canvas10');
+        const ctxBird = canvasBird.getContext('2d');
+
+        // Oiseau
+        let birdX = 50;
+        let birdY = canvasBird.height / 2;
+        const birdRayon = 20;
+        const graviteBird = 0.5;
+        let vitesseBird = 0;
+
+        // Tuyaux
+        const largeurTuyauBird = 50;
+        const espaceTuyauBird = 200;
+        let tuyauxBird = [];
+        tuyauxBird[0] = {
+            x: canvasBird.width,
+            y: Math.floor(Math.random() * (canvasBird.height - espaceTuyauBird)),
+        };
+
+        let finJeuBird = false; 
+        let scoreBird = 0; 
+
+        function reinitialiserJeu() {
+            birdX = 50;
+            birdY = canvasBird.height / 2;
+            vitesseBird = 0;
+            tuyauxBird = [];
+            tuyauxBird[0] = {
+                x: canvasBird.width,
+                y: Math.floor(Math.random() * (canvasBird.height - espaceTuyauBird)),
+            };
+            finJeuBird = false;
+            scoreBird = 0;
+        }
+
+        function dessinerBird() {
+            if (finJeuBird) {
+                reinitialiserJeu(); // Réinitialiser le jeu si le jeu est terminé
+            }
+            
+            // Effacer le canvas
+            ctxBird.clearRect(0, 0, canvasBird.width, canvasBird.height);
+
+            // Dessiner l'oiseau
+            ctxBird.beginPath();
+            ctxBird.arc(birdX, birdY, birdRayon, 0, Math.PI * 2);
+            ctxBird.fillStyle = 'red';
+            ctxBird.fill();
+            ctxBird.closePath();
+
+            // Dessiner le score
+            ctxBird.font = '30px Arial';
+            ctxBird.fillStyle = '#000';
+            ctxBird.fillText('Score: ' + scoreBird, 10, 30);
+
+            // Gravité
+            vitesseBird += graviteBird;
+            birdY += vitesseBird;
+
+            // Dessiner les tuyaux
+            for (let i = 0; i < tuyauxBird.length; i++) {
+                ctxBird.beginPath();
+                ctxBird.rect(tuyauxBird[i].x, 0, largeurTuyauBird, tuyauxBird[i].y); 
+                ctxBird.rect(tuyauxBird[i].x, tuyauxBird[i].y + espaceTuyauBird, largeurTuyauBird, canvasBird.height - tuyauxBird[i].y - espaceTuyauBird); 
+                ctxBird.fillStyle = 'green';
+                ctxBird.fill();
+                ctxBird.closePath();
+
+                tuyauxBird[i].x--;
+
+                if (tuyauxBird[i].x === canvasBird.width / 2) {
+                    tuyauxBird.push({
+                        x: canvasBird.width,
+                        y: Math.floor(Math.random() * (canvasBird.height - espaceTuyauBird)),
+                    });
+                }
+
+                // Détection de collision
+                if (
+                    (birdX + birdRayon > tuyauxBird[i].x && birdX - birdRayon < tuyauxBird[i].x + largeurTuyauBird) &&
+                    ((birdY - birdRayon < tuyauxBird[i].y || birdY + birdRayon > tuyauxBird[i].y + espaceTuyauBird) ||
+                    (birdY + birdRayon > canvasBird.height || birdY - birdRayon < 0))
+                ) {
+                    if (!finJeuBird) { 
+                        finJeuBird = true; 
+                    }
+                }
+
+                // Incrémenter le score si l'oiseau passe un tuyau
+                if (tuyauxBird[i].x === birdX - birdRayon) {
+                    scoreBird += 1;
+                    argent += 2;
+                    document.getElementById("argent").innerText = "Votre argent : " + argent + " €";
+                }
+            }
+
+            requestAnimationFrame(dessinerBird);
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.code === 'Space') {
+                vitesseBird = -10; 
+            }
+        });
+
+        dessinerBird();
+    </script>
+
+<script>
+    let count = 0;
+    let clickPoints = 0;
+    let clickValue = 1;
+    let clickPointsInterval = null;
+    const counterElement = document.getElementById("counter");
+
+function incrementCounter() {
+  count += clickValue;
+  counterElement.textContent = count;
+  document.getElementById('animationClicker').style.transform = 'scale(0.8)';
+  setTimeout(function() {
+    document.getElementById('animationClicker').style.transform = 'scale(1)';
+  }, 100);
+}
+
+    function buyUpgrade(cost, upgradeType, value) {
+      if (count >= cost) {
+        count -= cost;
+        counterElement.textContent = count;
+        if (upgradeType === 'clickPoints') {
+          if (!clickPointsInterval) {
+            clickPointsInterval = setInterval(function() {
+              count += clickPoints;
+              counterElement.textContent = count;
+            }, 1000);
+          }
+          clickPoints += value;
+        } else if (upgradeType === 'clickValue') {
+          clickValue += value;
+        }
+      } else {
+        alert("Vous n'avez pas assez de Tristan pour acheter cette amélioration.");
+      }
+    }
+  </script>
+<script>
+        var maxMessages = 5; // Nombre maximal de messages à afficher
+        var messageCount = 0; // Initialisation du compteur de messages
+
+        // Délai pour afficher le message initial du bot
+        setTimeout(function() {
+            displayBotMessage("Comment puis-je vous aider ?");
+        }, 500);
+
+        function askQuestion(question) {
+var pseudo = document.getElementById("pseudoInput").value;
+            displayMessage(""+ pseudo +"", question);
+            setTimeout(function() {
+                var answer = getAnswer(question);
+                displayBotMessage(answer);
+            }, 1000); // Délai avant d'afficher la réponse du bot
+        }
+
+    function getAnswer(question) {
+        // Ajoutez vos réponses pour chaque problème ici
+           switch (question) {
+                case 'C\'est quoi MULTRISTAN ?':
+                    return "MULTRISTAN est un programme informatique en html qui a pour but d'aider les gens à accomplir leurs besoins au mieux. Crée en Novembre 2023 par Fuze34081 avec le soutien de DIAB Jihad, GOMEZ Matthias et SUEL Anatole, il prend petit à petit du succès jusqu'à aujourd'hui.";
+                case 'Comment faire des retours ?':
+                    return "Pour faire des retours, rendez-vous sur le menu principal puis descendez et vous trouverez le formulaire. Remplissez-le puis cliquez sur 'Envoyer' en bas du formulaire. A noter qu'une connexion internet est requise.";
+                case 'Pourquoi des publicités ?':
+                    return "En réalité, les publicités de MULTRISTAN n'ont suscité aucun intérêt jusqu'à présent. Mais qui sait, peut-être cela changera-t-il à l'avenir.";
+                case 'Le clicker affiche un nombre bizarre':
+                    return "Si le Tristan Clicker affiche un nombre étrange à partir de 1.000.000.000.000.000.000.000, ne vous inquiétez pas, c'est tout à fait normal. En réalité, il s'agit d'une notation scientifique utilisée pour représenter des nombres très grands. Par exemple, 1,4578644385798e+21 équivaut à 1,4578644385798 fois 10 à la puissance 21. Atteignez simplement 1e+22 pour débloquer l'Éternel Fazbear et terminer le clicker.";
+                case 'Qui est-tu ?':
+                    return "Je suis un robot programmé pour répondre à vos questions sur MULTRISTAN. Mon nom est Assistance MULTRISTAN.";
+                case 'Comment changer le fond et le texte ?':
+                    return "Pour changer le fond et le texte, rendez-vous dans le menu principal, puis descendez jusqu'à trouver le bouton 'Ouvrir la boutique'. Cliquez dessus et choisissez vos personnalisations parmi plus de 240 possibilités pour la version classique et 2400 pour la version Premium ! À noter que si vous n'avez pas assez d'argent, vous pouvez en gagner en jouant à des jeux ou en utilisant des fonctionnalités !";
+                case 'Problème 7':
+                    return "Voici la solution pour le Problème 7...";
+                case 'Problème 8':
+                    return "Voici la solution pour le Problème 8...";
+                case 'Problème 9':
+                    return "Voici la solution pour le Problème 9...";
+                default:
+                    return "Désolé, je ne peux pas aider avec cela pour le moment.";
+            }
+        }
+
+        function displayMessage(sender, message) {
+            var chatDisplay = document.getElementById('chat-display');
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            var senderElement = document.createElement('span');
+            senderElement.classList.add('sender');
+            senderElement.textContent = sender + ': ';
+            messageElement.appendChild(senderElement);
+            messageElement.appendChild(document.createTextNode(message));
+            chatDisplay.appendChild(messageElement);
+            messageCount++;
+
+            // Supprimer les messages les plus anciens si le nombre de messages dépasse maxMessages
+            if (messageCount > maxMessages) {
+                var messages = chatDisplay.getElementsByClassName('message');
+                chatDisplay.removeChild(messages[0]); // Supprime le premier message (le plus ancien)
+                messageCount--;
+            }
+        }
+
+        function displayBotMessage(message) {
+            var chatDisplay = document.getElementById('chat-display');
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            var senderElement = document.createElement('span');
+            senderElement.classList.add('sender');
+            var strongElement = document.createElement('strong');
+            strongElement.textContent = 'Assistance MULTRISTAN';
+            senderElement.appendChild(strongElement);
+            senderElement.appendChild(document.createTextNode(' : '));
+            messageElement.appendChild(senderElement);
+            chatDisplay.appendChild(messageElement);
+
+            var messageContentElement = document.createElement('span');
+            messageElement.appendChild(messageContentElement);
+
+            var index = 0;
+            var intervalId = setInterval(function() {
+                if (index < message.length) {
+                    messageContentElement.textContent += message[index];
+                    index++;
+                } else {
+                    clearInterval(intervalId);
+                }
+            }, 10);
+
+            messageCount++;
+
+            if (messageCount > maxMessages) {
+                var messages = chatDisplay.getElementsByClassName('message');
+                chatDisplay.removeChild(messages[0]);
+                messageCount--;
+            }
+        }
+    </script>
+
+<script>
+        document.getElementById("submitButton").addEventListener("click", function(event) {
+            event.preventDefault(); // Empêche l'action par défaut du formulaire (envoi)
+            var pseudo = document.getElementById("pseudoInput").value;
+            var password = document.getElementById("passwordInput").value;
+            
+            if (pseudo !== "" && password !== "") {
+                endLogin();
+                appliquerStylesAuBody();
+                alert("Bienvenue sur MULTRISTAN "+ pseudo +" !");
+            } else {
+                alert("Veuillez remplir tous les champs.");
+            }
+        });
+
+function endLogin() {
+    var programme = document.getElementById('programme');
+    var login = document.getElementById('login');
+
+    if (login.style.display === 'block') {
+        programme.style.display = 'block';
+        login.style.display = 'none';
+    } else {
+        programme.style.display = 'block';
+        login.style.display = 'none';
+    }
+}
+
+        function appliquerStylesAuBody() {
+            var body = document.querySelector("body");
+            body.style.fontFamily = "Times New Roman";
+            body.style.backgroundColor = "white";
+            body.style.margin = "auto"; // Supprime la marge
+            body.style.padding = "auto"; // Supprime le padding
+            body.style.display = "block"; // Supprime le display flex
+            body.style.justifyContent = "initial"; // Supprime la justification horizontale
+            body.style.alignItems = "initial"; // Supprime l'alignement vertical
+            body.style.height = "auto"; // Définit la hauteur automatique
+        }
+
+function updateCredentials() {
+    var pseudo = document.getElementById("pseudoInput").value;
+    var password = document.getElementById("passwordInput").value;
+    var usernameElement = document.querySelector(".username");
+    usernameElement.innerHTML = "Nom d'utilisateur :<br><br>" + pseudo + "<br><br><br>Mot de passe :<br><br>" + password;
+}
+setInterval(updateCredentials, 5000);
+
+function refresh() {
+    location.reload();
+}
+
+    function escapeGameChezBK() {
+      window.open("https://view.genially.com/66051bfa80b7f0001497f115/interactive-content-escape-game-chez-bk-parfait");
+      argent += 10;
+        mettreAJourAffichageArgent();
+    }
+    </script>
+
+</body>
+</html>
